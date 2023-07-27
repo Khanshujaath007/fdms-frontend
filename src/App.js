@@ -1,10 +1,5 @@
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { useState } from "react";
-import { questions } from "./Questions";
-import { Multistepbar } from "./components/Multistepbar";
-import Multistepform from "./components/Multistepform";
+import Loginform from "./components/Loginform";
 function App() {
   const [index, setIndex] = useState(1);
   const totalpagecount = questions.length;

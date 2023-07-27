@@ -1,9 +1,10 @@
 import React from "react";
+import { useState } from "react";
 import "./Loginform.css";
 function Loginform() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [isEmailValid, setIsEmailValid] = React.useState(false);
+  const [emailError, setEmailError] = useState('');
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleEmailChange = (event) => {
@@ -14,6 +15,12 @@ function Loginform() {
     setPassword(event.target.value);
   };
 
+  const validateEmail = (email) => {
+
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    return emailPattern.test(email);
+  };
   const handleEyeClick = (e) => {
     e.stopPropagation();
     setShowPassword((prevShow) => !prevShow);
@@ -22,9 +29,12 @@ function Loginform() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Here, you can perform login validation and authentication logic.
-    if (password.length < 8 || !password.includes('@') || !password.includes('$')) console.log("Enter Strong Password");
-    console.log("Email:", email);
-    console.log("Password:", password);
+    if (validateEmail(email)) {
+      setEmailError('');
+    }
+    else {
+      setEmailError('Invalid Email');
+    }
   };
 
 
@@ -51,6 +61,8 @@ function Loginform() {
                 <i class="fas fa-check"></i>
               </span>
             </p>
+            {emailError && <p className="help is-danger">{emailError}</p>}
+
           </div>
           <div class="field field2">
             <p class="control has-icons-left">
@@ -81,6 +93,13 @@ function Loginform() {
           <div class="field" >
             <button class="button is-primary is-fullwidth" type="submit">Login</button>
           </div>
+
+          <div className="has-text-centered" style={{ margin: '10px 0' }}>
+            <hr />
+            <span style={{ verticalAlign: 'middle', padding: '0 10px' }}>OR</span>
+            <hr />
+          </div>
+
 
 
         </form >

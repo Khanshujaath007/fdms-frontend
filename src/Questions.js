@@ -1,4 +1,4 @@
-export const questions = [
+const questions = [
   {
     section: 1,
     items: [
@@ -39,3 +39,5 @@ export const questions = [
     ],
   },
 ];
+
+export default questions;

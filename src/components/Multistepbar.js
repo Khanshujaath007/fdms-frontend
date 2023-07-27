@@ -3,7 +3,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import "./Multistepbar.css";
 
-export const Multistepbar = (props) => {
+const Multistepbar = (props) => {
   return (
     <ProgressBar
       percent={((props.step - 1) * 100) / 2}
@@ -27,3 +27,5 @@ export const Multistepbar = (props) => {
     </ProgressBar>
   );
 };
+
+export default Multistepbar;

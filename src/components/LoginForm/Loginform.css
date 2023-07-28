@@ -10,7 +10,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 700px;
+    max-width: 500px !important;
     padding: 30px;
     border: 1px solid #ccc;
     border-radius: 8px;

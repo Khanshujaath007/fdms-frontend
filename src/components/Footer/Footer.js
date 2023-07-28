@@ -5,7 +5,8 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer bg-body-tertiary black-text"> {/* Add the footer class here */}
+    <footer className="footer bg-body-tertiary black-text"> 
+     <div className="footer-container">
       <Container className="d-flex justify-content-center align-items-center">
         <p className="text-dark mb-0 footer-text">© 2023 FDMS. All rights reserved.</p>
         <div className="ms-auto">
@@ -20,6 +21,7 @@ const Footer = () => {
           </a>
         </div>
       </Container>
+      </div>
     </footer>
   );
 };

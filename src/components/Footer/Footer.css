@@ -1,11 +1,16 @@
-.footer{
-    padding-bottom: 1.2em !important;
-    padding-top: 1.2em !important;
+.footer {
+    padding: 1.2em 0;
+
 }
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
 
 @media screen and (max-width: 768px) {
-    .footer-text{
+    .footer-text {
         font-size: 0.8em !important;
     }
 }
-    

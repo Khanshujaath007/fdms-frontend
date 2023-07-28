@@ -3,8 +3,12 @@ import { useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Multistepbar from "./components/Multistepbar.js";
 import Multistepform from "./components/Multistepform.js";
+import Header from "./components/Header/Header.js";
+import Footer from "./components/Footer/Footer.js";
+import HomePage from "./components/HomePage/Home.js";
+
 import questions from "./Questions.js"
-import Loginform from "./components/LoginForm/Loginform.js";
+// import Loginform from "./components/LoginForm/Loginform.js";
 function App() {
   const [index, setIndex] = useState(1);
   const totalpagecount = questions.length;
@@ -16,6 +20,9 @@ function App() {
   };
   return (
     <div className="App">
+      {/* <Header />
+      <HomePage />  
+      <Footer /> */}
       <Container className="h-100">
         <Row className="m-5">
           <Col className="align-self-center">

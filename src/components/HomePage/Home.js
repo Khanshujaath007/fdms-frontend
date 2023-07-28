@@ -2,11 +2,14 @@ import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import './Home.css';
 import homeImg from '../../Image/Vector_Art_for_excel.jpg';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 
 
 const HomePage = () => {
     return (
         <div>
+            <Header />
             <div className="diagonal-bg">
                 <Container className="text-center main-header">
                     <h1 className="display-4 text-white title">Welcome to Faculty Management</h1>
@@ -41,7 +44,7 @@ const HomePage = () => {
                 </div>
             </div>
 
-
+            <Footer />
         </div>
     );
 };

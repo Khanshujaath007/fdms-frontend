@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.css';
 
-function BasicExample() {
+function Header() {
   return (
     <Navbar expand="lg" className="navbar-dark-lavender">
       <Container>
@@ -22,4 +22,4 @@ function BasicExample() {
   );
 }
 
-export default BasicExample;
+export default Header;

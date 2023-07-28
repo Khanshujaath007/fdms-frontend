@@ -6,7 +6,7 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 
 
-const HomePage = () => {
+const Home = () => {
     return (
         <div>
             <Header />
@@ -49,4 +49,4 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default Home;

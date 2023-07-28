@@ -3,16 +3,19 @@ const questions = [
     section: 1,
     items: [
       {
-        label: "username",
+        label: "Enter username",
         type: "text",
+        value: "username",
       },
       {
-        label: "password",
+        label: "Enter password",
         type: "password",
+        value: "password",
       },
       {
-        label: "age",
+        label: "Enter age",
         type: "number",
+        value: "age",
       },
     ],
   },
@@ -22,10 +25,12 @@ const questions = [
       {
         label: "Publication",
         type: "text",
+        value: "Publication",
       },
       {
         label: "Patent ID",
         type: "text",
+        value: "patentID",
       },
     ],
   },

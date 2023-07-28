@@ -1,14 +1,13 @@
 import { Form } from "react-bootstrap";
 import { useState } from "react";
 
-export const FormItem = ({ item, onChange, answer }) => {
-  const [currentValue, setCurrentValue] = useState(answer || null);
+const FormItem = ({ item, onChange, answer }) => {
+  const [currentValue, setCurrentValue] = useState(answer || "");
 
   const handleChange = (value) => {
     setCurrentValue(value);
     onChange(value, item.value);
   };
-
   switch (item.type) {
     case "text":
       return (
@@ -26,7 +25,7 @@ export const FormItem = ({ item, onChange, answer }) => {
     case "password":
       return (
         <>
-          <Form.Label htmlFor="inputPassword5">{item.label}</Form.Label>
+          <Form.Label htmlFor="inputpassword5">{item.label}</Form.Label>
           <Form.Control
             type="password"
             id="inputPassword5"
@@ -42,7 +41,7 @@ export const FormItem = ({ item, onChange, answer }) => {
           <Form.Label htmlFor="age">{item.label}</Form.Label>
           <Form.Control
             type="number"
-            id="age"
+            id={item.label}
             aria-describedby=""
             onChange={(e) => onChange(e.target.value, item.value)}
           />
@@ -68,6 +67,9 @@ export const FormItem = ({ item, onChange, answer }) => {
     case "information":
       return <p>{item.label}</p>;
       break;
+    default:
       return <></>;
   }
 };
+
+export default FormItem;

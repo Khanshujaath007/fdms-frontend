@@ -4,7 +4,7 @@ import './Home.css';
 import homeImg from '../../Image/Vector_Art_for_excel.jpg';
 
 
-const HomePage = () => {
+const Home = () => {
     return (
         <div>
             <div className="diagonal-bg">
@@ -46,4 +46,4 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default Home;

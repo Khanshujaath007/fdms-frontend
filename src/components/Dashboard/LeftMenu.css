@@ -1,0 +1,25 @@
+/* leftmenu.css */
+.left-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.left-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.left-menu li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.left-menu li:hover {
+  text-decoration: underline;
+}

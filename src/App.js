@@ -4,14 +4,16 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/HomePage/Home";
 import Login from "./components/LoginForm/Loginform";
+import AdminPanel from "./components/Dashboard/AdminPanel";
 function App() {
   return (
     <Router>
       <div className="App">
-        <Routes>
+        <AdminPanel></AdminPanel>
+        {/* <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
-        </Routes>
+        </Routes> */}
       </div>
     </Router>
   );

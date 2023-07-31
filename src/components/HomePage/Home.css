@@ -10,7 +10,9 @@
 }
 
 .title {
-    font-weight: 600;
+    font-weight: 600 !important;
+    font-style: oblique;
+    font-size: 3rem !important;
 }
 
 .btn {
@@ -88,6 +90,11 @@
     .diagonal-bg {
       min-height: 90vh; 
       justify-content: flex-start;
+    }
+    .title {
+        font-weight: 600 !important;
+        font-style: oblique;
+        font-size: 2rem !important;
     }
     .main-header {
         position: absolute;

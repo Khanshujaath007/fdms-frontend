@@ -13,8 +13,8 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto"> 
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">About us</Nav.Link>
-            <Nav.Link href="#link">Contact us</Nav.Link>
+            <Nav.Link href="#about">About us</Nav.Link>
+            <Nav.Link href="#footer">Contact us</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

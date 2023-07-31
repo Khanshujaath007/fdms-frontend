@@ -1,7 +1,5 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import Home from "./components/HomePage/Home";
 import Login from "./components/LoginForm/Loginform";
 function App() {

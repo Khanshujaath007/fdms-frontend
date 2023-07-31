@@ -6,17 +6,17 @@ import './Footer.css';
 const Footer = () => {
   return (
     <footer className="footer bg-body-tertiary black-text"> 
-     <div className="footer-container">
+     <div className="footer-container" id='footer'>
       <Container className="d-flex justify-content-center align-items-center">
         <p className="text-dark mb-0 footer-text">© 2023 FDMS. All rights reserved.</p>
         <div className="ms-auto">
-          <a href="#" className="me-3 text-dark">
+          <a href="#fac" className="me-3 text-dark">
             <FaFacebook />
           </a>
-          <a href="#" className="me-3 text-dark">
+          <a href="#tw" className="me-3 text-dark">
             <FaTwitter />
           </a>
-          <a href="#" className="text-dark">
+          <a href="#ins" className="text-dark">
             <FaInstagram />
           </a>
         </div>

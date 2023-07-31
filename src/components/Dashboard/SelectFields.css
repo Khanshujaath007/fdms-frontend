@@ -1,0 +1,14 @@
+.select-field {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: rgb(23, 152, 203);
+  font-size: medium;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  /* position: fixed; */
+  padding: 14px;
+  max-width: 400px;
+  justify-content: center;
+  align-items: center;
+}

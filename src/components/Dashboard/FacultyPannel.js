@@ -1,7 +1,7 @@
 import LeftMenu from "./LeftMenu";
 import SelectFields from "./SelectFields";
-import "./AdminPanel.css";
-const AdminPanel = () => {
+import "./FacultyPannel.css";
+const FacultyPannel = () => {
   const user = {
     name: "Tejas",
     email: "tejas@example.com",
@@ -20,4 +20,4 @@ const AdminPanel = () => {
     </>
   );
 };
-export default AdminPanel;
+export default FacultyPannel;

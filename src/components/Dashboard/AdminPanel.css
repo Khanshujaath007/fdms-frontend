@@ -7,3 +7,23 @@
   top: 0;
   left: 0;
 }
+
+.side-content {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .side-content {
+    flex-direction: column;
+  }
+
+  .main-content {
+    padding-top: 40px;
+  }
+}

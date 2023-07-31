@@ -1,25 +1,212 @@
-/* leftmenu.css */
+/* LeftMenu.css */
+
 .left-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100%;
-  background-color: #333;
-  color: #fff;
+  background-color: #f0e9f8; /* Lavender background color */
   padding: 20px;
+  width: 300px;
+  position: relative; /* Add relative positioning to the parent */
+}
+
+.menu-header {
+  margin-bottom: 20px;
+}
+
+.menu-header h2 {
+  font-size: 1.5rem;
+  color: #6a0572; /* Dark lavender text color */
+  margin: 0;
 }
 
 .left-menu ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .left-menu li {
   margin-bottom: 10px;
-  cursor: pointer;
 }
 
-.left-menu li:hover {
-  text-decoration: underline;
+/* Buttons for the menu items */
+.left-menu button {
+   background-color: #9b37a2; 
+  color: #f0e9f8; 
+  border: none;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px; 
+  transition: background-color 0.2s; 
+}
+
+.left-menu button:hover {
+  background-color: #3d065f; /* Medium lavender background color on hover */
+}
+
+.left-menu button:focus {
+  outline: none; 
+}
+
+.left-menu button:active {
+  background-color: #590450; /* Slightly darker shade for the active state */
+}
+
+@media (max-width: 768px) {
+  .left-menu {
+    width: 100%; 
+  }
+
+  .left-menu ul {
+    display: none;
+    position: absolute; 
+    top: 0px;
+    left: 0;
+    height: 100vh; 
+    width: 200px; 
+    background-color: #f0e9f8; 
+    padding: 10px; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
+    z-index: 1; 
+  }
+
+  .left-menu.open ul {
+    display: block;
+  }
+
+  .list{
+    padding-top: 70px !important;
+  }
+  .menu-header {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.burger-menu {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #e6d2f3; 
+  z-index: 2; 
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    display: block;
+  }
+}
+
+.burger-menu span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #3d065f; /* Medium lavender text color */
+  margin: 5px auto;
+}
+
+.burger-menu.open span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.open span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* LeftMenu.css */
+
+/* ... (existing styles) ... */
+
+/* Profile Picture and User Info */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture-container {
+  /* Show the profile picture on larger screens */
+  display: block;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.default-profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ccc; /* Add a default background color for the profile picture */
+  margin-right: 10px;
+}
+
+.user-details {
+  /* Show the user name and email on larger screens */
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.user-details h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.user-details p {
+  margin: 0;
+  color: #777;
+}
+
+/* Hide the profile picture and user info on mobile devices */
+@media (max-width: 768px) {
+  .profile-picture-container {
+    display: none;
+  }
+
+  .user-details {
+    display: none;
+  }
+}
+/* Logout Button */
+.logout-container {
+  margin-top: auto; /* Push the logout button to the bottom */
+}
+
+.logout-button {
+  background-color: #6a0572; /* Dark lavender background color for the logout button */
+  color: #f0e9f8; /* Lavender text color for the logout button */
+  border: none;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px; /* Add some border-radius to make the logout button look softer */
+  transition: background-color 0.2s; /* Add a smooth transition for background color changes */
+}
+
+.logout-button:hover {
+  background-color: #3d065f; /* Medium lavender background color on hover */
+}
+
+/* Properly style the button text to make it merge with the background color */
+.logout-button:focus {
+  outline: none; /* Remove the default focus outline */
+}
+
+/* On button click (active state), darken the background color slightly */
+.logout-button:active {
+  background-color: #590450; /* Slightly darker shade for the active state */
 }

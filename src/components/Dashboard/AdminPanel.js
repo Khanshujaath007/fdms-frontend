@@ -23,12 +23,19 @@ const AdminPanel = () => {
     setSelectedMenuItem(item);
   };
 
-  const SelectedComponent = menuItems.find((item) => item.label === selectedMenuItem)?.component || null;
+  const SelectedComponent =
+    menuItems.find((item) => item.label === selectedMenuItem)?.component ||
+    null;
 
   return (
     <>
       <div className="side-content">
-        <LeftMenu dashboardTitle="My Dashboard" user={user} menuItems={menuItems.map((item) => item.label)} onItemClick={handleMenuItemClick} />
+        <LeftMenu
+          dashboardTitle="My Dashboard"
+          user={user}
+          menuItems={menuItems.map((item) => item.label)}
+          onItemClick={handleMenuItemClick}
+        />
         <div className="main-content">
           {SelectedComponent && <SelectedComponent />}
         </div>

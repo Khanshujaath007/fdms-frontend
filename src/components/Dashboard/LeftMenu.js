@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./LeftMenu.css";
 
-const LeftMenu = ({ dashboardTitle, user, menuItems }) => {
+const LeftMenu = ({ dashboardTitle, user, menuItems,onItemClick }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -37,7 +37,7 @@ const LeftMenu = ({ dashboardTitle, user, menuItems }) => {
         <ul className="list">
           {menuItems.map((item) => (
             <li key={item}>
-              <button>{item}</button>
+              <button onClick={() => onItemClick(item)}>{item}</button>
             </li>
           ))}
         </ul>

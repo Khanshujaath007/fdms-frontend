@@ -13,6 +13,10 @@ const Home = () => {
     const handleLogin = () => {
         navigate('/login');
     };
+
+    const handleSignup = () => {
+        navigate('/signup');
+    };
     return (
         <div>
             <Header />
@@ -23,7 +27,7 @@ const Home = () => {
                         Manage all your data in one platform and enjoy seamless storage and organization.
                     </p>
                     <div>
-                        <Button variant="primary" className="me-3 btn1">
+                        <Button variant="primary" className="me-3 btn1" onClick={handleSignup}>
                             Sign In
                         </Button>
                         <Button variant="secondary" className='btn2' onClick={handleLogin}>

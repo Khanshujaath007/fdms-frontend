@@ -21,7 +21,6 @@ const FormItem = ({ item, onChange, answer }) => {
           />
         </>
       );
-      break;
     case "password":
       return (
         <>
@@ -34,7 +33,6 @@ const FormItem = ({ item, onChange, answer }) => {
           />
         </>
       );
-      break;
     case "number":
       return (
         <>
@@ -47,8 +45,30 @@ const FormItem = ({ item, onChange, answer }) => {
           />
         </>
       );
-      break;
-
+    case "date":
+      return (
+        <>
+          <Form.Label htmlFor="date">{item.label}</Form.Label>
+          <Form.Control
+            type="date"
+            id={item.label}
+            aria-describedby=""
+            onChange={(e) => onChange(e.target.value, item.value)}
+          />
+        </>
+      );
+    case "email":
+      return (
+        <>
+          <Form.Label htmlFor="email">{item.label}</Form.Label>
+          <Form.Control
+            type="email"
+            id={item.label}
+            aria-describedby=""
+            onChange={(e) => onChange(e.target.value, item.value)}
+          />
+        </>
+      );
     case "select":
       return (
         <div className="mt-2">

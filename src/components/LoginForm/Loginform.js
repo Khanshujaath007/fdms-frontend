@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Loginform.css";
 function Loginform() {
   const [email, setEmail] = React.useState("");
@@ -26,16 +27,47 @@ function Loginform() {
     setShowPassword((prevShow) => !prevShow);
   };
 
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Here, you can perform login validation and authentication logic.
     if (validateEmail(email)) {
-      setEmailError('');
-    }
-    else {
-      setEmailError('Invalid Email');
+      setEmailError("");
+      try {
+        const response = await fetch("http://localhost:5500/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+        const { token, user } = data;
+
+        const { userId } = user;
+
+        localStorage.setItem('token', token);
+
+        if (response.ok) {
+          console.log("Login successful!");
+          // Redirect to the dashboard or desired page after successful login
+
+          navigate(`/faculty-dashboard/${userId}`);
+        } else {
+          console.log("Login failed!");
+          // Handle login failure, show error message, etc.
+        }
+      } catch (error) {
+        console.error("Error logging in:", error);
+      }
+    } else {
+      setEmailError("Invalid Email");
     }
   };
+
+
 
 
   return (

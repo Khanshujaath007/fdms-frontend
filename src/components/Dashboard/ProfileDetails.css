@@ -1,0 +1,28 @@
+.profile {
+    display: flex;
+    flex-direction: column; /* Display sections in a column layout */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-section {
+    padding: 20px;
+    margin: 0 10px;
+    border-bottom: 1px solid #eee; /* Add a bottom border to separate sections */
+  }
+  
+  .profile-section:last-child {
+    border-bottom: none; /* Remove bottom border from the last section */
+  }
+  
+  .profile-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .profile-section p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  

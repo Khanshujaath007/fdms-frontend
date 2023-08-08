@@ -41,7 +41,7 @@
 }
 
 .left-menu button:hover {
-  background-color: #3d065f; /* Medium lavender background color on hover */
+  background-color: #530c7e; /* Medium lavender background color on hover */
 }
 
 .left-menu button:focus {
@@ -49,7 +49,7 @@
 }
 
 .left-menu button:active {
-  background-color: #590450; /* Slightly darker shade for the active state */
+  background-color: #720868;
 }
 
 @media (max-width: 768px) {

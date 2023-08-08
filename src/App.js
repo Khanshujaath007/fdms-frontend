@@ -5,6 +5,8 @@ import Login from "./components/LoginForm/Loginform";
 import AdminPanel from "./components/Dashboard/AdminPanel";
 import FacultyPannel from "./components/Dashboard/FacultyPannel";
 import Signup from "./components/SignupForm/Signup";
+import FacultyViewProfile from "./components/Dashboard/FacultyViewProfile/FacultyViewProfile";
+
 function App() {
   return (
     <Router>
@@ -13,6 +15,8 @@ function App() {
           <Route path="/" element={<AdminPanel />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/faculty" element={<FacultyPannel />}></Route>
+          <Route path="/faculty/view-profile" element={<FacultyViewProfile />}></Route>
           <Route
             path="/admin-dashboard/:userId"
             element={<AdminPanel />}

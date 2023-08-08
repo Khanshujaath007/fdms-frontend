@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./LeftMenu.css";
 
-const LeftMenu = ({ dashboardTitle, user, menuItems,onItemClick }) => {
+const LeftMenu = ({ dashboardTitle, user, menuItems, onItemClick }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
+
+  const handleMenuItemClick = (item) => {
+    onItemClick(item);
+    setMenuOpen(false);
+  };
+  
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
@@ -37,7 +44,11 @@ const LeftMenu = ({ dashboardTitle, user, menuItems,onItemClick }) => {
         <ul className="list">
           {menuItems.map((item) => (
             <li key={item}>
-              <button onClick={() => onItemClick(item)}>{item}</button>
+              <Link to={item.to} onClick={() => handleMenuItemClick(item.label)}>
+                <button>
+                  {item.label}
+                </button>
+              </Link>
             </li>
           ))}
         </ul>

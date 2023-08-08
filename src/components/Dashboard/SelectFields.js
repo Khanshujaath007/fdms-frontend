@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "./SelectFields.css";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -25,8 +26,11 @@ export default function SelectFields() {
       ...prevState,
       selectedFields: selectedValue,
     }));
-    console.log(fields);
   };
+  useEffect(() => {
+    console.log(fields.selectedFields);
+  }, [fields]);
+
   return (
     <div className="select-field">
       <Select

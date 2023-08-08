@@ -10,11 +10,17 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<AdminPanel />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/admin-dashboard/:userId" element={<AdminPanel />}></Route>
-          <Route path="/faculty-dashboard/:userId" element={<FacultyPannel />}></Route>
+          <Route
+            path="/admin-dashboard/:userId"
+            element={<AdminPanel />}
+          ></Route>
+          <Route
+            path="/faculty-dashboard/:userId"
+            element={<FacultyPannel />}
+          ></Route>
         </Routes>
       </div>
     </Router>

@@ -4,7 +4,8 @@
   background-color: #f0e9f8; /* Lavender background color */
   padding: 20px;
   width: 300px;
-  position: relative; /* Add relative positioning to the parent */
+  position: relative;
+  height: auto; 
 }
 
 .menu-header {
@@ -29,7 +30,7 @@
 
 /* Buttons for the menu items */
 .left-menu button {
-   background-color: #9b37a2; 
+   background-color: #9b37a2 !important; 
   color: #f0e9f8; 
   border: none;
   padding: 10px;
@@ -41,7 +42,7 @@
 }
 
 .left-menu button:hover {
-  background-color: #530c7e; /* Medium lavender background color on hover */
+  background-color: #530c7e !important; /* Medium lavender background color on hover */
 }
 
 .left-menu button:focus {

@@ -6,6 +6,7 @@ import AdminPanel from "./components/Dashboard/AdminPanel";
 import FacultyPannel from "./components/Dashboard/FacultyPannel";
 import Signup from "./components/SignupForm/Signup";
 import FacultyViewProfile from "./components/Dashboard/FacultyViewProfile/FacultyViewProfile";
+import FacultyHomePage from "./components/Dashboard/FacultyHomePage.js/FacultyHomePage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/faculty" element={<FacultyPannel />}></Route>
+          <Route path="/faculty/home" element={<FacultyHomePage />}></Route>
           <Route path="/faculty/view-profile" element={<FacultyViewProfile />}></Route>
           <Route
             path="/admin-dashboard/:userId"

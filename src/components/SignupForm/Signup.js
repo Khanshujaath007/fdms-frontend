@@ -53,7 +53,7 @@ const Signup = () => {
       {Object.keys(formErrors).length === 0 && isSubmit === true ? (
         <div className="ui message success">Signed in Successfully</div>
       ) : (
-        <div className="container">
+        <div className="signup-container">
           <form onSubmit={onSubmitHandler}>
             <h1>Sign up</h1>
             <div className="ui-divider"></div>

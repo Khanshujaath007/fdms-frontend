@@ -1,0 +1,70 @@
+.faculty-home-page {
+  text-align: center;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+}
+
+.home-title {
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.home-details {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.link {
+  display: inline-block !important;
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  text-decoration: none !important;
+}
+
+
+.link:hover {
+  background-color: gray;
+}
+
+.faculty-home-page {
+  display: flex;
+}
+
+.home-content {
+  flex: 1;
+  padding: 20px;
+  height: auto;
+}
+
+.home-title {
+  margin-top: 10% !important;
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.home-details {
+  padding: 0 10%;
+  margin-top: 30px !important;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.link {
+  display: inline-block;
+  margin-right: 10px;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

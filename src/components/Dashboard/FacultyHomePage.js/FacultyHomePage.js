@@ -43,7 +43,10 @@ const FacultyHomePage = () => {
           can also share your profile with others.
         </p>
         <Link className="link" to="/faculty/add-publication">
-          Add Publication or Patent
+          Add Publication
+        </Link>
+        <Link className="link" to="/faculty/add-patent">
+          Add Patent
         </Link>
         <Link className="link" to={`/faculty/edit-profile/${userId}`}>
           Edit Profile

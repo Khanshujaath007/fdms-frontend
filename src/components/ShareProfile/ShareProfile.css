@@ -1,5 +1,209 @@
-.sprofile-title{
+body .sbody {
+    position: relative;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    top: 0;
+}
+
+.sprofile-title {
+    text-align: center;
+    margin: 20px;
+}
+
+.smainHeading {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.stitle {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.sprofile-picture-container {
+    position: absolute;
+    left: 30px;
+    margin: 20px;
+}
+
+.sprofile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sdetails {
+    position: relative;
+    left: 20vw;
+    margin: 20px;
+}
+
+.suser-name {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.suser-email,
+.suser-phoneno,
+.suser-city {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.sadditional-details {
+    text-align: center;
+    margin: 20px;
+}
+
+.googleScholarlink,
+.scopuslink {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #8761ac;
+    color: #fff;
+    text-decoration: none !important;
+    border-radius: 5px;
+}
+
+.googleScholarlink:hover,
+.scopuslink:hover {
+    color: white;
+    background-color: #583e70;
+}
+
+.spublication-info,
+.spatent-info {
+    margin: 20px;
+}
+
+.spublication-title,
+.spatent-title {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.spublication-details,
+.spatent-details {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.sdata-header {
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin: 20px;
+}
+
+.sdata-header-item {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #777;
+    transition: color 0.3s;
+}
+
+.sdata-header-item.active {
+    color: #8761ac;
+    border-bottom: 2px solid #8761ac;
+}
+
+.sdata-info {
+    margin: 20px;
+}
+
+.card {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: lavender;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.card-details {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.sdata-link {
+    text-decoration: none !important;
+}
+
+
+@media (max-width: 768px) {
+    .sprofile-title {
+        margin: 10px;
+    }
+
+    .sprofile-picture-container {
+        position: relative;
+        text-align: center;
+        margin: 10px;
+    }
+
+    .sprofile-picture {
+        width: 100px;
+        height: 100px;
+    }
+
+    .sdetails {
+        position: relative;
+        text-align: center;
+        left: 0 !important;
+        margin: 10px;
+    }
+
+    .suser-name {
+        font-size: 20px;
+        margin-bottom: 3px;
+    }
+
+    .suser-email,
+    .suser-phoneno,
+    .suser-city {
+        font-size: 14px;
+        margin-bottom: 3px;
+    }
+
+    .sadditional-details {
+        text-align: center;
+        margin: 10px;
+    }
+
+    .googleScholarlink,
+    .scopuslink {
+        display: inline-block;
+        margin: 3px;
+        padding: 5px 10px;
+        font-size: 14px;
+        border-radius: 3px;
+    }
+
+    .spublication-info,
+    .spatent-info {
+        margin: 10px;
+    }
+
+    .spublication-title,
+    .spatent-title {
+        font-size: 18px;
+        margin-bottom: 3px;
+    }
+
+    .spublication-details,
+    .spatent-details {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
 }

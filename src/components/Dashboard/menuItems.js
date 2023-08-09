@@ -1,4 +1,3 @@
-import SelectFields from "./SelectFields";
 
 const menuItems = [
   { label: "FacultyHome", to: "/faculty/home" },

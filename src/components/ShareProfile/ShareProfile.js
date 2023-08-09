@@ -2,20 +2,30 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-
+import Card from "./Card";
 import "./ShareProfile.css";
 
-const ShareProfile = ({ user, publication, patent, programDetails }) => {
+import { user, publication, patent } from "./dummy";
 
+// const ShareProfile = ({ user, publication, patent, programDetails }) => {
+const ShareProfile = () => {
+
+    const [showPublications, setShowPublications] = useState(true);
+
+    const toggleView = () => {
+        setShowPublications(!showPublications);
+    };
+
+    const dataToShow = showPublications ? publication : patent;
     return (
-        <>
+        <div className="sbody">
             <div className="sprofile-title">
-                <h1> FDMS</h1>
-                <h1>Faculty Information</h1>
+                <h1 className="smainHeading"> FDMS</h1>
+                <h1 className="stitle">Faculty Information</h1>
             </div>
-            <div className="profile-picture-container">
+            <div className="sprofile-picture-container">
                 <img src={user.profilePicture} alt="ProfilePicture"
-                    className="profile-picture" />
+                    className="sprofile-picture" />
             </div>
             <div className="sdetails">
                 <h3 className="suser-name">{user.name}</h3>
@@ -28,27 +38,30 @@ const ShareProfile = ({ user, publication, patent, programDetails }) => {
                 <Link to={publication.googleScholarId} className="googleScholarlink">GoogleScholarId</Link>
                 <Link to={publication.scopusId} className="scopuslink">ScopusId</Link>
             </div>
-
-            <div className="spublication-info">
-                {publication.map((item) => (
-                    <>
-                    <h1 className="spublication-title">{item.title}</h1>
-                    <h3 className="spublication-details">{item.details}</h3>
-                    </>
-                ))}
+            <div className="sdata-header">
+                <div
+                    className={`sdata-header-item ${showPublications ? "active" : ""}`}
+                    onClick={() => toggleView("publications")}
+                >
+                    Publications
+                </div>
+                <div
+                    className={`sdata-header-item ${!showPublications ? "active" : ""}`}
+                    onClick={() => toggleView("patents")}
+                >
+                    Patents
+                </div>
             </div>
 
-            <div className="spatent-info">
-                {patent.map((item) => (
-                    <>
-                    <h1 className="spatent-title">{item.title}</h1>
-                    <h3 className="spatent-details">{item.details}</h3>
-                    </>
+            <div className="sdata-info">
+                <Link  to={`/${showPublications ? "publication" : "patent"}/details`} className="sdata-link">
+                {dataToShow.map((item, index) => (
+                    <Card key={index} title={item.title} details={item.details} completeDetails={item} />
                 ))}
+                </Link>
             </div>
 
-
-        </>
+        </div>
     )
 }
 

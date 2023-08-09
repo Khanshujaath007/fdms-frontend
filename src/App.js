@@ -7,6 +7,7 @@ import FacultyPannel from "./components/Dashboard/FacultyPannel";
 import Signup from "./components/SignupForm/Signup";
 import FacultyViewProfile from "./components/Dashboard/FacultyViewProfile/FacultyViewProfile";
 import FacultyHomePage from "./components/Dashboard/FacultyHomePage.js/FacultyHomePage";
+import ShareProfile from "./components/ShareProfile/ShareProfile";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             path="/faculty-dashboard/:userId"
             element={<FacultyPannel />}
           ></Route>
+          <Route path="/share-profile" element={<ShareProfile />}></Route>
         </Routes>
       </div>
     </Router>

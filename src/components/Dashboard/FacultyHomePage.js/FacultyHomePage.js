@@ -4,11 +4,12 @@ import LeftMenu from "../LeftMenu";
 import { Link } from "react-router-dom";
 import "./FacultyHomePage.css";
 import menuItems from "../menuItems";
-
+import Modal from "../../Modal/Modal";
 const FacultyHomePage = () => {
   const { userId } = useParams();
   const [userData, setUserData] = useState({});
   const [firstName, setFirstName] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -42,9 +43,13 @@ const FacultyHomePage = () => {
           edit or delete your publications using the "Edit/Delete" button. You
           can also share your profile with others.
         </p>
-        <Link className="link" to="/faculty/add-publication">
+        {/* <Link className="link" to="/faculty/add-publication">
           Add Publication
-        </Link>
+        </Link> */}
+        <button className="link" onClick={() => setOpenModal(true)}>
+          Add Publications
+        </button>
+        {openModal && <Modal closeModal={setOpenModal} />}
         <Link className="link" to="/faculty/add-patent">
           Add Patent
         </Link>

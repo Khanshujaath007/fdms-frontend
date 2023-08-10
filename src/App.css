@@ -1,8 +1,11 @@
 .App {
-  text-align: left;
-  height: auto ;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
 }
-
 
 .App-header {
   background-color: #dbdbdb;

@@ -4,12 +4,14 @@ import LeftMenu from "../LeftMenu";
 import { Link } from "react-router-dom";
 import "./FacultyHomePage.css";
 import menuItems from "../menuItems";
-import Modal from "../../Modal/Modal";
+import PublicaitonForm from "../../DashboardForms/PublicationForm";
+import PatentForm from "../../DashboardForms/PatentForm";
 const FacultyHomePage = () => {
   const { userId } = useParams();
   const [userData, setUserData] = useState({});
   const [firstName, setFirstName] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [openModalPatent, setOpenModalPatent] = useState(false);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -49,10 +51,15 @@ const FacultyHomePage = () => {
         <button className="link" onClick={() => setOpenModal(true)}>
           Add Publications
         </button>
-        {openModal && <Modal closeModal={setOpenModal} />}
-        <Link className="link" to="/faculty/add-patent">
+        {openModal && <PublicaitonForm closeModal={setOpenModal} />}
+
+        <button className="link" onClick={() => setOpenModalPatent(true)}>
           Add Patent
-        </Link>
+        </button>
+        {openModalPatent && <PatentForm closeModal={setOpenModalPatent} />}
+        {/* <Link className="link" to="/faculty/add-patent">
+          Add Patent
+        </Link> */}
         <Link className="link" to={`/faculty/edit-profile/${userId}`}>
           Edit Profile
         </Link>

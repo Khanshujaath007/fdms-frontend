@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./Modal.css";
-
+import "./Form.css";
 const ModalOverlay = (props) => {
   return (
     <>
@@ -11,18 +10,24 @@ const ModalOverlay = (props) => {
             <button onClick={() => props.closeModal(false)}>X</button>
           </div>
           <div className="title">
-            <h1>Fill Publication Details</h1>
+            <h1>Fill Patent Details</h1>
           </div>
-          <div className="body"></div>
-          {/* render content from props below */}
-          <form>
-            <label for="name">Enter Publication Name</label>
-            <input type="text" id="name"></input>
-            <label for="date">Enter Publication date</label>
-            <input type="text" id="date"></input>
-            <label for="ID">Enter Publication ID</label>
-            <input type="number" id="ID"></input>
-          </form>
+          <div className="body">
+            <form>
+              <div>
+                <label>Enter Patent Name</label>
+                <input type="text"></input>
+              </div>
+              <div>
+                <label>Enter Patent date</label>
+                <input type="date"></input>
+              </div>
+              <div>
+                <label>Enter Patent Link</label>
+                <input type="text"></input>
+              </div>
+            </form>
+          </div>
           <div className="footer">
             <button onClick={() => props.closeModal(false)} id="cancelBtn">
               Cancel
@@ -34,7 +39,7 @@ const ModalOverlay = (props) => {
     </>
   );
 };
-const Modal = (props) => {
+const PatentForm = (props) => {
   return (
     <>
       {ReactDOM.createPortal(
@@ -45,4 +50,4 @@ const Modal = (props) => {
   );
 };
 
-export default Modal;
+export default PatentForm;

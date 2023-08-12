@@ -10,8 +10,8 @@
 }
 
 .modalContainer {
-  width: 60vw;
-  height: 60vh;
+  width: 80vw;
+  height: 80vh;
   border-radius: 12px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
@@ -68,4 +68,18 @@
 
 #cancelBtn {
   background-color: crimson;
+}
+
+.invalid input {
+  border: 1px solid #b40e0e;
+  background-color: #fddddd;
+}
+
+.invalid input:focus {
+  border-color: #ff8800;
+  background-color: #fbe8d2;
+}
+
+.error-text {
+  color: #b40e0e;
 }

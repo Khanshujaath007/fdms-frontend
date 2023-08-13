@@ -13,9 +13,29 @@ const FacultyHomePage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalPatent, setOpenModalPatent] = useState(false);
 
+  //test data
+  const Data = [
+    {
+      id: 1,
+      firstname: "Alex",
+      lastname: "bob",
+      phone: "909090909",
+      googleid: "123",
+      scoupusid: "123",
+      publicaitonname: "abc",
+      publicaitondate: "date",
+      publicaitonurl: "https://google.com",
+      patentname: "abc",
+      patentdate: "date",
+      patenturl: "https://google.com",
+      //more fields...
+    },
+  ];
+
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
+        //fetch all details of user
         const response = await fetch(`http://localhost:5500/profile/${userId}`);
         if (response.ok) {
           const data = await response.json();
@@ -28,6 +48,7 @@ const FacultyHomePage = () => {
         console.error("Error fetching user profile data:", error);
       }
     };
+    console.log(Data[0]);
     fetchUserProfile();
   }, [userId]);
 
@@ -45,9 +66,7 @@ const FacultyHomePage = () => {
           edit or delete your publications using the "Edit/Delete" button. You
           can also share your profile with others.
         </p>
-        {/* <Link className="link" to="/faculty/add-publication">
-          Add Publication
-        </Link> */}
+
         <button className="link" onClick={() => setOpenModal(true)}>
           Add Publications
         </button>
@@ -57,13 +76,11 @@ const FacultyHomePage = () => {
           Add Patent
         </button>
         {openModalPatent && <PatentForm closeModal={setOpenModalPatent} />}
-        {/* <Link className="link" to="/faculty/add-patent">
-          Add Patent
-        </Link> */}
-        <Link className="link" to={`/faculty/edit-profile/${userId}`}>
+
+        <Link className="link" to={`/faculty/edit-profile/${Data[0].id}`}>
           Edit Profile
         </Link>
-        <Link className="link" to={`/share-profile/${userId}`}>
+        <Link className="link" to={`/share-profile/${Data.id}`}>
           Share Profile
         </Link>
         <h2>customise button</h2>

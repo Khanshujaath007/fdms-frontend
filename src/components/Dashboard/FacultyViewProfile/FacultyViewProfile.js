@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./FacultyViewProfile.css";
-import ProfileDetails from "../ProfileDetails";
+import ProfileDetails from "./ProfileDetails";
 import LeftMenu from "../LeftMenu";
 import menuItems from "../menuItems";
 

@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/HomePage/Home";
 import Login from "./components/LoginForm/Loginform";
 import AdminPanel from "./components/Dashboard/AdminPanel";
@@ -8,9 +8,10 @@ import Signup from "./components/SignupForm/Signup";
 import FacultyViewProfile from "./components/Dashboard/FacultyViewProfile/FacultyViewProfile";
 import FacultyHomePage from "./components/Dashboard/FacultyHomePage.js/FacultyHomePage";
 import ShareProfile from "./components/ShareProfile/ShareProfile";
+import Update from "./components/Update/Update";
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />}></Route>
@@ -30,10 +31,11 @@ function App() {
             path="/faculty-dashboard/:userId"
             element={<FacultyPannel />}
           ></Route>
+          <Route path="/faculty/edit-profile/:userId" element={<Update />}></Route>
           <Route path="/share-profile" element={<ShareProfile />}></Route>
         </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

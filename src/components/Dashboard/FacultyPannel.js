@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router";
 import { useEffect } from "react";
 import "./FacultyPannel.css";
-import ProfileDetails from "./ProfileDetails";
+import ProfileDetails from "./FacultyViewProfile/ProfileDetails";
 import  menuItems  from "./menuItems";
 const FacultyPannel = () => {
 

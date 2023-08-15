@@ -49,12 +49,13 @@ function Loginform() {
         const { userId } = user;
 
         localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
 
         if (response.ok) {
           console.log("Login successful!");
           // Redirect to the dashboard or desired page after successful login
 
-          navigate(`/faculty-dashboard/${userId}`);
+          navigate(`/faculty/home/${userId}`);
         } else {
           console.log("Login failed!");
           // Handle login failure, show error message, etc.

@@ -100,6 +100,7 @@ const Signup = () => {
       if (response.ok) {
         console.log("Signup successful!");
         // Redirect to the dashboard or desired page after successful login
+        localStorage.setItem('userId', user.userId);
         navigate(`/faculty/home/${user.userId}`);
       } else {
         console.log("Signup failed!");

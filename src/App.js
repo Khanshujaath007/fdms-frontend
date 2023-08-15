@@ -24,7 +24,7 @@ function App() {
           {/* this is the route for faculty home page with userId */}
           <Route path="/faculty/home/:userId" element={<FacultyHomePage />}></Route> 
           <Route
-            path="/faculty/view-profile"
+            path="/faculty/view-profile/:userId"
             element={<FacultyViewProfile />}
           ></Route>
           <Route

@@ -1,22 +1,21 @@
-
-
 .signup-container {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-  max-width: 500px;
+  padding: 20px;
   width: 100%;
-  margin: auto;
 }
-.signup-container > form {
-  width: 70%;
+
+.signup-container>form {
+  max-width: 800px;
+  width: 100%;
   border: 1px solid #dfdfdf;
   padding: 20px;
   border-radius: 8px;
   background: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  /* Add some spacing between form and header */
 }
 
 .sign-up-header {
@@ -26,8 +25,31 @@
   margin-bottom: 0.5rem;
 }
 
-.button{
+.single-page-form {
+  max-width: 800px;
+  width: 100%;
+  border: 1px solid #dfdfdf;
+  padding: 20px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.star{
+  color: red;
+}
+.button {
   color: white !important;
+}
+
+.phone-field {
+  display: flex;
+  align-items: center;
+}
+
+.get-otp-button {
+  margin-left: auto;
 }
 
 .error-span {

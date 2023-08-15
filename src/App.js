@@ -21,6 +21,8 @@ function App() {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/faculty" element={<FacultyPannel />}></Route>
           <Route path="/faculty/home" element={<FacultyHomePage />}></Route>
+          {/* this is the route for faculty home page with userId */}
+          <Route path="/faculty/home/:userId" element={<FacultyHomePage />}></Route> 
           <Route
             path="/faculty/view-profile"
             element={<FacultyViewProfile />}

@@ -1,11 +1,12 @@
 .modalBackground {
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-  z-index: 10;
+  z-index: 10 !important;
   background: rgba(0, 0, 0, 0.4);
 }
 

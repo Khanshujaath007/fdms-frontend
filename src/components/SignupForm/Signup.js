@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import "./Signup.css";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const initialValues = { username: "", email: "", password: "", phone: "" };
+  const initialValues = { usernameOrEmail: "", password: "", phone: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -11,10 +12,37 @@ const Signup = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const onSubmitHandler = (e) => {
+  const navigate = useNavigate();
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
+    try {
+      const response = await fetch("http://localhost:5500/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...formValues })
+
+      });
+      const data = await response.json();
+      const { userId } = data;
+
+      if (response.ok) {
+        console.log("Signup successful!");
+        // Redirect to the dashboard or desired page after successful login
+
+        navigate(`/faculty-dashboard/${userId}`);
+      } else {
+        console.log("Signup failed!");
+
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+
   };
   useEffect(() => {
     console.log(formErrors);
@@ -26,15 +54,12 @@ const Signup = () => {
     const errors = {};
     const emailregex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
     const nonNumericPattern = /[^\d]/;
-    if (!values.username) {
-      errors.username = "Username is required";
-    } else if (values.username.length < 3) {
-      errors.username = "Username too short!";
-    }
-    if (!values.email) {
-      errors.email = "Email is required";
-    } else if (!emailregex.test(values.email)) {
-      errors.email = "Enter a valid Email-ID ";
+
+    //comblined both username and email validation
+    if (!values.usernameOrEmail) {
+      errors.usernameOrEmail = "Username or Email is required";
+    } else if (!emailregex.test(values.usernameOrEmail)) {
+      errors.usernameOrEmail = "Enter a valid Username or Email";
     }
     if (!values.password) {
       errors.password = "Password is required";
@@ -54,31 +79,21 @@ const Signup = () => {
         <div className="ui message success">Signed in Successfully</div>
       ) : (
         <div className="signup-container">
+          <div className="sign-up-header">Welcome</div>
           <form onSubmit={onSubmitHandler}>
             <h1>Sign up</h1>
             <div className="ui-divider"></div>
             <div className="ui form">
               <div className="field">
-                <label>Username</label>
+                <label>Username or Email</label>
                 <input
                   type="text"
-                  name="username"
-                  placeholder="Enter your name"
-                  value={formValues.username}
+                  name="usernameOrEmail"
+                  placeholder="Enter your username or email"
+                  value={formValues.usernameOrEmail}
                   onChange={onChangeHandler}
-                ></input>
-                <span className="error-span">{formErrors.username}</span>
-              </div>
-              <div className="field">
-                <label>Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your Email ID"
-                  value={formValues.email}
-                  onChange={onChangeHandler}
-                ></input>
-                <span className="error-span">{formErrors.email}</span>
+                />
+                <span className="error-span">{formErrors.usernameOrEmail}</span>
               </div>
               <div className="field">
                 <label>Password</label>

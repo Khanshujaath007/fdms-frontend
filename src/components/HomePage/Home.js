@@ -1,11 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './Home.css';
 import homeImg from '../../Assets/Image/Vector_Art_for_excel.jpg';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
-
 
 const Home = () => {
     const navigate = useNavigate();
@@ -17,11 +16,12 @@ const Home = () => {
     const handleSignup = () => {
         navigate('/signup');
     };
+    
     return (
         <div>
             <Header />
             <div className="diagonal-bg">
-                <Container className="text-center main-header">
+                <div className="text-center main-header">
                     <h1 className="display-4 text-white title">Welcome to Faculty Management</h1>
                     <p className="lead text-white">
                         Manage all your data in one platform and enjoy seamless storage and organization.
@@ -34,11 +34,10 @@ const Home = () => {
                             Log In
                         </Button>
                     </div>
-                </Container>
+                </div>
             </div>
             <div className="body">
                 <div className="about-container" id="about">
-                    
                     <div className="about-content">
                         <h1 className="display-4 about-title">About</h1>
                         <p className="lead">
@@ -53,7 +52,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
             <Footer />
         </div>
     );

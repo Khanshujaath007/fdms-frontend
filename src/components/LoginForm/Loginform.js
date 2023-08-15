@@ -68,12 +68,10 @@ function Loginform() {
   };
 
 
-
-
   return (
     <div className="login-background ">
-      <div className="login-container container" >
-        <h1 className="title">Welcome Back!</h1>
+      <div className="login-container" >
+        <h1 className="login-title">Welcome Back!</h1>
         <form onSubmit={handleSubmit} method="POST">
 
           <div class="field field1">
@@ -126,14 +124,11 @@ function Loginform() {
             <button class="button is-primary is-fullwidth" type="submit">Login</button>
           </div>
 
-          <div className="has-text-centered" style={{ margin: '10px 0' }}>
+          {/* <div className="has-text-centered" style={{ margin: '10px 0' }}>
             <hr />
             <span style={{ verticalAlign: 'middle', padding: '0 10px' }}>OR</span>
             <hr />
-          </div>
-
-
-
+          </div> */}
         </form >
       </div>
     </div>

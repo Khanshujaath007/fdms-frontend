@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Card = ({ title, details,completeDetails }) => {
+const Card = ({ title, details }) => {
   return (
     <div className="card">
       <h1 className="card-title">{title}</h1>

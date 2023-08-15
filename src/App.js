@@ -9,12 +9,13 @@ import FacultyViewProfile from "./components/Dashboard/FacultyViewProfile/Facult
 import FacultyHomePage from "./components/Dashboard/FacultyHomePage.js/FacultyHomePage";
 import ShareProfile from "./components/ShareProfile/ShareProfile";
 import Update from "./components/Update/Update";
+import ProfileCard from "./components/ProfileCard/ProfileCard";
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<ProfileCard />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/faculty" element={<FacultyPannel />}></Route>
@@ -31,7 +32,10 @@ function App() {
             path="/faculty-dashboard/:userId"
             element={<FacultyPannel />}
           ></Route>
-          <Route path="/faculty/edit-profile/:userId" element={<Update />}></Route>
+          <Route
+            path="/faculty/edit-profile/:userId"
+            element={<Update />}
+          ></Route>
           <Route path="/share-profile" element={<ShareProfile />}></Route>
         </Routes>
       </div>

@@ -11,16 +11,15 @@
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
-.card-title {
+.card_title {
   margin: 3px;
   padding: 3px;
 }
-.card-name {
-
+.card_name {
   margin: 3px;
   padding: 3px;
 }
-.social-button {
+.social_button {
   width: 60px;
   height: 60px;
   border-radius: 70%;
@@ -31,7 +30,7 @@
   transition: background-color 0.5s ease;
 }
 
-.social-button a {
+a {
   font-size: larger;
   color: white;
   text-decoration: none;
@@ -39,7 +38,7 @@
   margin: 3px;
   padding: 3px;
 }
-.profile-picture {
+.profile_picture {
   width: 150px;
   height: 150px;
   border-radius: 50%; /* Creates a circular shape */
@@ -47,18 +46,18 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Optional: Add a shadow for depth */
 }
 
-.profile-picture img {
+.profile_picture img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Maintain aspect ratio and cover the circle */
 }
 
-.profile-btn {
+.profile_btn {
   border: rgb(29, 29, 29);
   border-radius: 30px;
   margin: 15px;
   padding: 15px;
-  font-size:medium ;
+  font-size: medium;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   font-weight: 400;
   background-color: rgb(30, 41, 255);

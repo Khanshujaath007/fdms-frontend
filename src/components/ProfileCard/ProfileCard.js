@@ -1,16 +1,17 @@
 import React from "react";
-import "./ProfileCard.css";
+// import "./ProfileCard.css";
+import styles from "./ProfileCard.module.css";
 import image from "../../Assets/Image/blank-profile-picture.png";
 function ProfileCard() {
   return (
     <>
-      <div className="container">
-        <div class="profile-picture">
+      <div className={styles.container}>
+        <div class={styles.profile_picture}>
           <img src={image} alt="Profile"></img>
         </div>
-        <div className="card-name">Name</div>
-        <div className="card-title">designation</div>
-        <span className="social-buttons">
+        <div className={styles.card_name}>Name</div>
+        <div className={styles.card_title}>designation</div>
+        <span className={styles.social_buttons}>
           <a className="social-button" link="#">
             <img
               width="48"
@@ -28,7 +29,7 @@ function ProfileCard() {
             />
           </a>
         </span>
-        <button className="profile-btn">View profile</button>
+        <button className={styles.profile_btn}>View profile</button>
       </div>
     </>
   );

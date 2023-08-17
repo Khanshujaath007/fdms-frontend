@@ -1,4 +1,7 @@
-
+/* className={`text-center ${styles['main-header']}`} 
+    to combine with styles from modules.css and external library
+    like bootstrap
+*/
 .diagonal-bg {
     background: linear-gradient(-45deg, #8761ac, #4c3463);
     min-height: 100vh;

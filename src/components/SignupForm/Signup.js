@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import "./Signup.css";
+// import "./Signup.css";
+import styles from "./Signup.module.css";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -26,8 +27,8 @@ const Signup = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [otpSent, setOtpSent] = useState(false); 
-  const [verificationMessage, setVerificationMessage] = useState(""); 
+  const [otpSent, setOtpSent] = useState(false);
+  const [verificationMessage, setVerificationMessage] = useState("");
 
   const [isOtpVerified, setIsOtpVerified] = useState(false);
   const onChangeHandler = (e) => {
@@ -63,7 +64,10 @@ const Signup = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ code: formValues.code, contact: formValues.contact }),
+        body: JSON.stringify({
+          code: formValues.code,
+          contact: formValues.contact,
+        }),
       });
 
       const data = await response.json();
@@ -100,7 +104,7 @@ const Signup = () => {
       if (response.ok) {
         console.log("Signup successful!");
         // Redirect to the dashboard or desired page after successful login
-        localStorage.setItem('userId', user.userId);
+        localStorage.setItem("userId", user.userId);
         navigate(`/faculty/home/${user.userId}`);
       } else {
         console.log("Signup failed!");
@@ -185,13 +189,18 @@ const Signup = () => {
       {Object.keys(formErrors).length === 0 && isSubmit === true ? (
         <div className="ui message success">Signed in Successfully</div>
       ) : (
-        <div className="signup-container">
-          <div className="sign-up-header">Welcome! Register here</div>
-          <form onSubmit={onSubmitHandler} className="single-page-form">
-            <div className="ui-divider"></div>
+        <div className={styles["signup-container"]}>
+          <div className={styles["sign-up-header"]}>Welcome! Register here</div>
+          <form
+            onSubmit={onSubmitHandler}
+            className={styles["single-page-form"]}
+          >
+            <div className={styles["ui-divider"]}></div>
             <div className="ui form">
-              <div className="field">
-                <label>First Name<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  First Name<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="text"
                   name="firstName"
@@ -199,10 +208,14 @@ const Signup = () => {
                   value={formValues.firstName}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.firstName}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.firstName}
+                </span>
               </div>
-              <div className="field">
-                <label>Last Name<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  Last Name<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="text"
                   name="lastName"
@@ -210,10 +223,14 @@ const Signup = () => {
                   value={formValues.lastName}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.lastName}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.lastName}
+                </span>
               </div>
-              <div className="field">
-                <label>Email<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  Email<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="text"
                   name="email"
@@ -221,10 +238,12 @@ const Signup = () => {
                   value={formValues.email}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.email}</span>
+                <span className={styles["error-span"]}>{formErrors.email}</span>
               </div>
-              <div className="field">
-                <label>Password<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  Password<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="password"
                   name="password"
@@ -232,10 +251,14 @@ const Signup = () => {
                   value={formValues.password}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.password}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.password}
+                </span>
               </div>
-              <div className="field">
-                <label>Confirm Password<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  Confirm Password<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="password"
                   name="confirmPassword"
@@ -243,10 +266,14 @@ const Signup = () => {
                   value={formValues.confirmPassword}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.confirmPassword}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.confirmPassword}
+                </span>
               </div>
-              <div className="field">
-                <label>Phone Number<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  Phone Number<span className={styles["star"]}>*</span>
+                </label>
                 <div className="phone-field">
                   <input
                     type="text"
@@ -256,15 +283,20 @@ const Signup = () => {
                     onChange={onChangeHandler}
                   />
                   {!otpSent && (
-                    <button className="ui primary button get-otp-button" onClick={sendOtp}>
+                    <button
+                      className="ui primary button get-otp-button"
+                      onClick={sendOtp}
+                    >
                       Get OTP
                     </button>
                   )}
                 </div>
-                <span className="error-span">{formErrors.contact}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.contact}
+                </span>
               </div>
               {otpSent && !isOtpVerified && (
-                <div className="field">
+                <div className={styles["field"]}>
                   <label>Enter OTP</label>
                   <input
                     type="text"
@@ -282,8 +314,10 @@ const Signup = () => {
                 </div>
               )}
 
-              <div className="field">
-                <label>Username<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  Username<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="text"
                   name="username"
@@ -291,10 +325,14 @@ const Signup = () => {
                   value={formValues.username}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.username}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.username}
+                </span>
               </div>
-              <div className="field">
-                <label>Age<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  Age<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="number"
                   name="age"
@@ -302,10 +340,12 @@ const Signup = () => {
                   value={formValues.age}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.age}</span>
+                <span className={styles["error-span"]}>{formErrors.age}</span>
               </div>
-              <div className="field">
-                <label>Date of Birth<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  Date of Birth<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="date"
                   name="dateOfBirth"
@@ -313,10 +353,14 @@ const Signup = () => {
                   value={formValues.dateOfBirth}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.dateOfBirth}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.dateOfBirth}
+                </span>
               </div>
-              <div className="field">
-                <label>Full Address<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  Full Address<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="text"
                   name="fullAddress"
@@ -324,10 +368,14 @@ const Signup = () => {
                   value={formValues.fullAddress}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.fullAddress}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.fullAddress}
+                </span>
               </div>
-              <div className="field">
-                <label>City<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  City<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="text"
                   name="city"
@@ -335,10 +383,12 @@ const Signup = () => {
                   value={formValues.city}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.city}</span>
+                <span className={styles["error-span"]}>{formErrors.city}</span>
               </div>
-              <div className="field">
-                <label>State<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  State<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="text"
                   name="state"
@@ -346,11 +396,13 @@ const Signup = () => {
                   value={formValues.state}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.state}</span>
+                <span className={styles["error-span"]}>{formErrors.state}</span>
               </div>
 
-              <div className="field">
-                <label>University<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  University<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="text"
                   name="university"
@@ -358,10 +410,14 @@ const Signup = () => {
                   value={formValues.university}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.university}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.university}
+                </span>
               </div>
-              <div className="field">
-                <label>University ID<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  University ID<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="text"
                   name="universityId"
@@ -369,10 +425,14 @@ const Signup = () => {
                   value={formValues.universityId}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.universityId}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.universityId}
+                </span>
               </div>
-              <div className="field">
-                <label>Department<span className="star">*</span></label>
+              <div className={styles["field"]}>
+                <label>
+                  Department<span className={styles["star"]}>*</span>
+                </label>
                 <input
                   type="text"
                   name="department"
@@ -380,7 +440,9 @@ const Signup = () => {
                   value={formValues.department}
                   onChange={onChangeHandler}
                 />
-                <span className="error-span">{formErrors.department}</span>
+                <span className={styles["error-span"]}>
+                  {formErrors.department}
+                </span>
               </div>
               <button className="fluid ui button">Submit</button>
             </div>

@@ -39,7 +39,7 @@ function App() {
             path="/faculty/edit-profile/:userId"
             element={<Update />}
           ></Route>
-          <Route path="/share-profile" element={<ShareProfile />}></Route>
+          <Route path="/share-profile/:userId" element={<ShareProfile />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

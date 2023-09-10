@@ -30,7 +30,7 @@
   transition: background-color 0.5s ease;
 }
 
-a {
+.a_tag {
   font-size: larger;
   color: white;
   text-decoration: none;

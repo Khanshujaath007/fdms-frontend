@@ -12,7 +12,7 @@ function ProfileCard() {
         <div className={styles.card_name}>Name</div>
         <div className={styles.card_title}>designation</div>
         <span className={styles.social_buttons}>
-          <a className="social-button" link="#">
+          <a className={styles.a_tag} link="#">
             <img
               width="48"
               height="48"
@@ -20,7 +20,7 @@ function ProfileCard() {
               alt="google-logo"
             />
           </a>
-          <a className="social-button">
+          <a className={styles.a_tag}>
             <img
               width="58"
               height="58"

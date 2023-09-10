@@ -1,28 +1,85 @@
 .profile {
-    display: flex;
-    flex-direction: column; /* Display sections in a column layout */
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .profile-section {
-    padding: 20px;
-    margin: 0 10px;
-    border-bottom: 1px solid #eee; /* Add a bottom border to separate sections */
-  }
-  
-  .profile-section:last-child {
-    border-bottom: none; /* Remove bottom border from the last section */
-  }
-  
-  .profile-section h2 {
-    margin-bottom: 10px;
-  }
-  
-  .profile-section p {
-    margin: 5px 0;
-    font-size: 14px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  font-weight: bold;
+  color: #333;
+}
+
+.tab-button.active {
+  background-color: #8761ac;
+  color: white;
+}
+
+.profile-section {
+  padding: 20px;
+  margin: 0 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-section:last-child {
+  border-bottom: none;
+}
+
+.profile-section h2 {
+  margin-bottom: 10px;
+  text-align: center; /* Center the heading */
+  font-size: 20px; /* Increase font size */
+  font-weight: bold;
+}
+
+.profile-section p {
+  margin: 5px 0;
+  font-size: 16px; /* Increase font size */
+}
+
+/* Hide sections that are not active */
+.profile-section.hidden {
+  display: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse !important;
+}
+
+table td {
+  padding: 10px !important;
+  border-bottom: 1px solid #eee;
+}
+
+table td:first-child {
+  font-weight: bold;
+  width: 150px;
+}
+
+.card {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card p {
+  margin: 5px 0;
+  font-size: 14px;
+}

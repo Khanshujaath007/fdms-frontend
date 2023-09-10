@@ -1,0 +1,16 @@
+.faculty-view-profile {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.left-menu {
+    height: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-main-content {
+    flex-grow: 1;
+    padding: 20px;
+}

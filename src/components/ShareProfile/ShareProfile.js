@@ -1,22 +1,45 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Card from "./Card";
 import "./ShareProfile.css";
 
-import { user, publication, patent } from "./dummy";
-
-// const ShareProfile = ({ user, publication, patent, programDetails }) => {
 const ShareProfile = () => {
+    const { userId } = useParams();
 
+    const [user, setUser] = useState({});
+    const [publication, setPublication] = useState([]);
+    const [patent, setPatent] = useState([]);
     const [showPublications, setShowPublications] = useState(true);
+
+    useEffect(() => {
+        const fetchSharedProfile = async () => {
+            try {
+                const response = await fetch(`http://localhost:5500/share-profile/${userId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    setUser(data.sharedProfile);
+                    // console.log(data.publicationInfoData);
+                    // console.log(data.patentInfoData);
+                    setPublication(data.publicationInfoData);
+                    setPatent(data.patentInfoData);
+                } else {
+                    console.log("Error fetching shared profile data");
+                }
+            } catch (error) {
+                console.error("Error fetching shared profile data:", error);
+            }
+        };
+
+        fetchSharedProfile();
+    }, [userId]);
 
     const toggleView = () => {
         setShowPublications(!showPublications);
     };
 
-    const dataToShow = showPublications ? publication : patent;
+    console.log("hello", publication);
+    console.log(patent);
     return (
         <div className="sbody">
             <div className="sprofile-title">
@@ -24,8 +47,7 @@ const ShareProfile = () => {
                 <h1 className="stitle">Faculty Information</h1>
             </div>
             <div className="sprofile-picture-container">
-                <img src={user.profilePicture} alt="ProfilePicture"
-                    className="sprofile-picture" />
+                <img src={user.profilePicture} alt="ProfilePicture" className="sprofile-picture" />
             </div>
             <div className="sdetails">
                 <h3 className="suser-name">{user.name}</h3>
@@ -34,10 +56,7 @@ const ShareProfile = () => {
                 <h4 className="suser-city">{user.city}</h4>
             </div>
 
-            <div className="sadditional-details">
-                <Link to={publication.googleScholarId} className="googleScholarlink">GoogleScholarId</Link>
-                <Link to={publication.scopusId} className="scopuslink">ScopusId</Link>
-            </div>
+            {/* Display publication or patent details */}
             <div className="sdata-header">
                 <div
                     className={`sdata-header-item ${showPublications ? "active" : ""}`}
@@ -54,16 +73,44 @@ const ShareProfile = () => {
             </div>
 
             <div className="sdata-info">
-                <Link  to={`/${showPublications ? "publication" : "patent"}/details`} className="sdata-link">
-                {dataToShow.map((item, index) => (
-                    <Card key={index} title={item.title} details={item.details} completeDetails={item} />
-                ))}
-                </Link>
+                {showPublications
+                    ? (
+                        Array.isArray(publication)
+                            ? publication.map((item, index) => (
+                                <Card key={index} title={item.briefExpertise} details={item.googleScholarId} completeDetails={item} />
+                            ))
+                            : (
+                                Object.keys(publication).length > 0
+                                    ? (
+                                        <Card
+                                            title={publication.briefExpertise}
+                                            details={publication.googleScholarId}
+                                            completeDetails={publication}
+                                        />
+                                    )
+                                    : <p>No publication data available.</p>
+                            )
+                    )
+                    : (
+                        Array.isArray(patent)
+                            ? patent.map((item, index) => (
+                                <Card key={index} title={item.titleOfPatent} details={item.statusOfPatent} completeDetails={item} />
+                            ))
+                            : (
+                                Object.keys(patent).length > 0
+                                    ? (
+                                        <Card
+                                            title={patent.titleOfPatent}
+                                            details={patent.statusOfPatent}
+                                            completeDetails={patent}
+                                        />
+                                    )
+                                    : <p>No patent data available.</p>
+                            )
+                    )}
             </div>
-
         </div>
-    )
-}
+    );
+};
 
 export default ShareProfile;
-

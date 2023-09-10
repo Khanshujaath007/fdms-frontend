@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import LeftMenu from "../LeftMenu";
 import { Link } from "react-router-dom";
+import CopyToClipboard from "react-copy-to-clipboard";
 import "./FacultyHomePage.css";
 import menuItems from "../menuItems";
 import PublicaitonForm from "../../DashboardForms/PublicationForm";
@@ -39,6 +40,7 @@ const FacultyHomePage = () => {
         const response = await fetch(`http://localhost:5500/profile/${userId}`);
         if (response.ok) {
           const data = await response.json();
+          console.log(data);
           setFirstName(data.userData.firstName);
           setUserData(data.userData);
         } else {
@@ -51,6 +53,14 @@ const FacultyHomePage = () => {
     console.log(Data[0]);
     fetchUserProfile();
   }, [userId]);
+
+  const copyProfileLinkToClipboard = () => {
+    const profileLink = `localhost:3000/share-profile/${userId}`;
+    navigator.clipboard.writeText(profileLink).then(() => {
+      alert("Profile link copied to clipboard!");
+    });
+  };
+
 
   return (
     <div className="faculty-home-page">
@@ -80,10 +90,7 @@ const FacultyHomePage = () => {
         <Link className="link" to={`/faculty/edit-profile/${Data[0].id}`}>
           Edit Profile
         </Link>
-        <Link className="link" to={`/share-profile/${Data.id}`}>
-          Share Profile
-        </Link>
-        <h2>customise button</h2>
+        <button className="link" onClick={copyProfileLinkToClipboard}>Copy Profile Link</button>
       </div>
     </div>
   );

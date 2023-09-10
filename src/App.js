@@ -10,6 +10,7 @@ import FacultyHomePage from "./components/Dashboard/FacultyHomePage.js/FacultyHo
 import ShareProfile from "./components/ShareProfile/ShareProfile";
 import Update from "./components/Update/Update";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
+import Logout from "./components/Logout/Logout";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<ProfileCard />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/logout" element={<Logout />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/faculty" element={<FacultyPannel />}></Route>
           <Route path="/faculty/home" element={<FacultyHomePage />}></Route>

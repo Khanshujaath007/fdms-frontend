@@ -6,6 +6,7 @@
   align-items: center;
   padding: 20px;
   width: 100%;
+  background-color: lavender ;
 }
 
 .signup-container>form {
@@ -40,11 +41,19 @@
 
 .star{
   color: red;
-}
-.button {
-  color: white !important;
+  margin-bottom : 0;
 }
 
+.button {
+  margin-top: 20px;
+  width: 100%;
+  color: white !important;
+  background-color: #8761ac;
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
 .phone-field {
   display: flex;
   align-items: center;

@@ -444,7 +444,7 @@ const Signup = () => {
                   {formErrors.department}
                 </span>
               </div>
-              <button className="fluid ui button">Submit</button>
+              <button className={`${styles["button"]}`}>Submit</button>
             </div>
           </form>
         </div>

@@ -26,19 +26,19 @@ const Home = () => {
           <h1 className={`display-4 text-white${styles["title"]}`}>
             Welcome to Faculty Management
           </h1>
-          <p className="lead text-white">
+          <p className={styles["lead text-white"]}>
             Manage all your data in one platform and enjoy seamless storage and
             organization.
           </p>
           <div>
             <Button
               variant="primary"
-              className="me-3 btn1"
+              className={`me-3 ${styles["btn-1"]}`}
               onClick={handleSignup}
             >
               Sign In
             </Button>
-            <Button variant="secondary" className="btn2" onClick={handleLogin}>
+            <Button variant="secondary" className={styles["btn-2"]} onClick={handleLogin}>
               Log In
             </Button>
           </div>
@@ -46,9 +46,9 @@ const Home = () => {
       </div>
       <div className="body">
         <div className={styles["about-container"]} id="about">
-          <div className="about-content">
-            <h1 className="display-4 about-title">About</h1>
-            <p className="lead">
+          <div className={styles["about-content"]}>
+            <h1 className={styles["display-4 about-title"]}>About</h1>
+            <p className={styles["lead"]}>
               This web application will help Faculty to maintain their important
               data in one platform where they can easily access their data and
               update it whenever they want. The admin can get all the
@@ -58,7 +58,7 @@ const Home = () => {
               to the committee with just one click.
             </p>
           </div>
-          <div className="about-image">
+          <div className={styles["about-image"]}>
             <img src={homeImg} alt="" />
           </div>
         </div>

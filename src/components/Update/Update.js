@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Update.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -23,6 +24,7 @@ const dummyData = [
 function Update(props) {
   //userid from url params
   const { userId } = useParams();
+  //data access from local storage or server
   const [Data, setData] = useState(dummyData[0]);
   useEffect(() => {
     //fetch details of user with userId
@@ -43,20 +45,21 @@ function Update(props) {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         {Object.keys(Data).map((key) => (
           <div key={key}>
-            <label htmlFor={key}>{key}</label>
+            <label htmlFor={key} className={styles.label}>{key}</label>
             <input
               type="text"
               id={key}
               name={key}
               value={Data[key]}
+              className={styles.input}
               onChange={(event) => handleInputChange(event, key)}
             />
           </div>
         ))}
-        <button type="submit">Submit</button>
+        <button type="submit" className={styles.button}>Submit</button>
       </form>
     </>
   );

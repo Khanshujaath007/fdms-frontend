@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./Form.css";
+import styles from "./Form.module.css";
 import useInput from "../hooks/use-input";
 const ModalOverlay = (props) => {
   let formIsValid = false;
@@ -31,7 +31,52 @@ const ModalOverlay = (props) => {
     reset: resetLinkInput,
   } = useInput((value) => value.includes("https://"));
 
-  if (enteredNameIsValid && enteredDateIsValid && enteredLinkIsValid) {
+  // orcidId:
+  const {
+    value: enteredorcidId,
+    isValid: enteredorcidIdIsValid,
+    hasError: orcidIdHasError,
+    valueChangeHandler: orcidIdChangeHandler,
+    inputBlurHandler: orcidIdBlurHandler,
+    reset: resetorcidIdInput,
+  } = useInput((value) => value.trim() !== "");
+  // researcherId
+  const {
+    value: enteredresearcherId,
+    isValid: enteredresearcherIdIsValid,
+    hasError: researcherIdHasError,
+    valueChangeHandler: researcherIdChangeHandler,
+    inputBlurHandler: researcherIdBlurHandler,
+    reset: resetresearcherIdInput,
+  } = useInput((value) => value.trim() !== "");
+  // scopusId:
+  const {
+    value: enteredscopusId,
+    isValid: enteredscopusIdIsValid,
+    hasError: scopusIdHasError,
+    valueChangeHandler: scopusIdChangeHandler,
+    inputBlurHandler: scopusIdBlurHandler,
+    reset: resetscopusIdInput,
+  } = useInput((value) => value.trim() !== "");
+  // googleScholarId:
+  const {
+    value: enteredgoogleScholarId,
+    isValid: enteredgoogleScholarIdIsValid,
+    hasError: googleScholarIdHasError,
+    valueChangeHandler: googleScholarIdChangeHandler,
+    inputBlurHandler: googleScholarIdBlurHandler,
+    reset: resetgoogleScholarIdInput,
+  } = useInput((value) => value.trim() !== "");
+
+  if (
+    enteredNameIsValid &&
+    enteredDateIsValid &&
+    enteredLinkIsValid &&
+    enteredorcidIdIsValid &&
+    enteredresearcherIdIsValid &&
+    enteredscopusIdIsValid &&
+    enteredgoogleScholarIdIsValid
+  ) {
     formIsValid = true;
   }
 
@@ -44,18 +89,22 @@ const ModalOverlay = (props) => {
     resetNameInput("");
     resetDateInput("");
     resetLinkInput("");
+    resetorcidIdInput("");
+    resetresearcherIdInput("");
+    resetscopusIdInput("");
+    resetgoogleScholarIdInput('')
   };
   return (
     <>
-      <div className="modalBackground">
-        <div className="modalContainer">
-          <div className="titleCloseBtn">
+      <div className={styles["modalBackground"]}>
+        <div className={styles["modalContainer"]}>
+          <div className={styles["titleCloseBtn"]}>
             <button onClick={() => props.closeModal(false)}>X</button>
           </div>
-          <div className="title">
+          <div className={styles["title"]}>
             <h1>Fill Publication Details</h1>
           </div>
-          <div className="body">
+          <div className={styles["body"]}>
             <div>
               <form onSubmit={formSubmissionHandler}>
                 <label>Enter Publication Name</label>
@@ -67,20 +116,21 @@ const ModalOverlay = (props) => {
                   value={enteredName}
                 ></input>
                 {nameInputHasError && (
-                  <p className="error-text">Name cannot be empty</p>
+                  <p className={styles["error-text"]}>Name cannot be empty</p>
                 )}
 
                 <div>
                   <label>Enter Publication date</label>
                   <input
                     type="date"
+                    max={new Date().toISOString().split('T')[0]}
                     id="date"
                     onChange={dateChangeHandler}
                     onBlur={dateBlurHandler}
                     value={enteredDate}
                   ></input>
                   {dateInputHasError && (
-                    <p className="error-text">Date cannot be empty</p>
+                    <p className={styles["error-text"]}>Date cannot be empty</p>
                   )}
                 </div>
                 <div>
@@ -92,12 +142,61 @@ const ModalOverlay = (props) => {
                     value={enteredLink}
                   ></input>
                   {linkInputHasError && (
-                    <p className="error-text">
+                    <p className={styles["error-text"]}>
                       Link should start with https://
                     </p>
                   )}
                 </div>
-                <div className="footer">
+                <div>
+                  <label>Enter orcidId: </label>
+                  <input
+                    type="text"
+                    onChange={orcidIdChangeHandler}
+                    onBlur={orcidIdBlurHandler}
+                    value={enteredorcidId}
+                  ></input>
+                  {orcidIdHasError && (
+                    <p className={styles["error-text"]}>Enter valid ID</p>
+                  )}
+                </div>
+                <div>
+                  <label>Enter researcherId: </label>
+                  <input
+                    type="text"
+                    onChange={researcherIdChangeHandler}
+                    onBlur={researcherIdBlurHandler}
+                    value={enteredresearcherId}
+                  ></input>
+                  {researcherIdHasError && (
+                    <p className={styles["error-text"]}>Enter valid ID</p>
+                  )}
+                </div>
+                <div>
+                  <label>Enter scopusId: </label>
+                  <input
+                    type="text"
+                    onChange={scopusIdChangeHandler}
+                    onBlur={scopusIdBlurHandler}
+                    value={enteredscopusId}
+                  ></input>
+                  {scopusIdHasError && (
+                    <p className={styles["error-text"]}>Enter valid ID</p>
+                  )}
+                </div>
+                <div>
+                  <label>Enter googleScholarId: </label>
+                  <input
+                    type="text"
+                    onChange={googleScholarIdChangeHandler}
+                    onBlur={googleScholarIdBlurHandler}
+                    value={enteredgoogleScholarId}
+                  ></input>
+                  {googleScholarIdHasError && (
+                    <p className={styles["error-text"]}>Enter valid ID</p>
+                  )}
+                </div>
+                {/* footer */}
+                <div className={styles["footer"]}>
                   <button
                     onClick={() => props.closeModal(false)}
                     id="cancelBtn"

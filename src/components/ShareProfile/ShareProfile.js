@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Card from "./Card";
 import "./ShareProfile.css";
 
@@ -38,8 +39,6 @@ const ShareProfile = () => {
         setShowPublications(!showPublications);
     };
 
-    console.log("hello", publication);
-    console.log(patent);
     return (
         <div className="sbody">
             <div className="sprofile-title">
@@ -54,6 +53,15 @@ const ShareProfile = () => {
                 <h4 className="suser-email">{user.email}</h4>
                 <h4 className="suser-phoneno">{user.contact}</h4>
                 <h4 className="suser-city">{user.city}</h4>
+            </div>
+
+            <div className="sadditional-details">
+                <Link to={user.googleScholarId} className="googleScholarlink">
+                    Google Scholar ID
+                </Link>
+                <Link to={user.scopusId} className="scopuslink">
+                    Scopus ID
+                </Link>
             </div>
 
             {/* Display publication or patent details */}

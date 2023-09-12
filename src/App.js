@@ -11,6 +11,7 @@ import ShareProfile from "./components/ShareProfile/ShareProfile";
 import Update from "./components/Update/Update";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
 import Logout from "./components/Logout/Logout";
+import SelectFields from "./components/Dashboard/SelectFields";
 function App() {
   return (
     <BrowserRouter>
@@ -23,14 +24,13 @@ function App() {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/faculty" element={<FacultyPannel />}></Route>
           <Route path="/faculty/home" element={<FacultyHomePage />}></Route>
-          {/* this is the route for faculty home page with userId */}
           <Route path="/faculty/home/:userId" element={<FacultyHomePage />}></Route> 
           <Route
             path="/faculty/view-profile/:userId"
             element={<FacultyViewProfile />}
           ></Route>
           <Route
-            path="/admin-dashboard/:userId"
+            path="/admin-dashboard/"
             element={<AdminPanel />}
           ></Route>
           <Route
@@ -40,6 +40,10 @@ function App() {
           <Route
             path="/faculty/edit-profile/:userId"
             element={<Update />}
+          ></Route>
+          <Route
+            path="/faculty/add-publication/:userId"
+            element={<SelectFields />}
           ></Route>
           <Route path="/share-profile/:userId" element={<ShareProfile />}></Route>
         </Routes>

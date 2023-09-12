@@ -2,8 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import styles from "./Form.module.css";
 import useInput from "../hooks/use-input";
+import { useParams } from "react-router";
+
 const ModalOverlay = (props) => {
   let formIsValid = true;
+  const { userId } = useParams();
   //patent name
   const {
     value: enteredPatent,
@@ -91,17 +94,46 @@ const ModalOverlay = (props) => {
     reset: resetpatentPublishedNumberInput,
   } = useInput((value) => value.trim() !== "");
 
-  const submissionHandler = (e) => {
+  const submissionHandler = async(e) => {
     e.preventDefault();
     console.log(enteredPatent, enteredPatentLink, enteredPatentdate);
     resetPatentInput("");
     resetPatentdateInput("");
+    resetPatentlinkInput("");
     resetpatentApplicationIdInput("");
     resetstatusOfPatentInput("");
     resetpatentFilledDateInput("");
     resetpatentPublishedDateInput("");
     resetpatentGrantedDateInput("");
     resetpatentPublishedNumberInput("");
+
+    try{
+        const response = await fetch(`http://localhost:5500/patent-details/${userId}`, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            patentName: enteredPatent,
+            patentDate: enteredPatentdate,
+            patentLink: enteredPatentLink,
+            patentApplicationId: patentApplicationId,
+            statusOfPatent: statusOfPatent,
+            patentFilledDate: patentFilledDate,
+            patentPublishedDate: patentPublishedDate,
+            patentGrantedDate: patentGrantedDate,
+            patentPublishedNumber: patentPublishedNumber,
+          }),
+        })
+        if (response.ok) {
+          console.log('Patent info saved successfully');
+          alert("Patent info saved successfully");
+        } else {
+          console.error('Error saving Patent info');
+        }
+    }catch(error){
+      console.log(error);
+    }
   };
   if (
     enteredPatentIsValid &&
@@ -127,132 +159,174 @@ const ModalOverlay = (props) => {
           </div>
           <div className={styles["body"]}>
             <form onSubmit={submissionHandler}>
-              <div>
-                <label>Enter Patent Title</label>
-                <input
-                  type="text"
-                  value={enteredPatent}
-                  onChange={patentChangedHandler}
-                  onBlur={patentBlurHandler}
-                ></input>
-                {patentInputHasError && (
-                  <p className={styles["error-text"]}>
-                    patent name cannot be empty
-                  </p>
-                )}
-              </div>
-              <div>
-                <label>Enter Patent date</label>
-                <input
-                  type="date"
-                  max={new Date().toISOString().split('T')[0]}
-                  value={enteredPatentdate}
-                  onChange={patentdateChangedHandler}
-                  onBlur={patentdateBlurHandler}
-                ></input>
-                {patentdateInputHasError && (
-                  <p className={styles["error-text"]}>
-                    patent date cannot be empty
-                  </p>
-                )}
-              </div>
-              <div>
-                <label>Enter Patent Link</label>
-                <input
-                  type="text"
-                  value={enteredPatentLink}
-                  onChange={patentlinkChangedHandler}
-                  onBlur={patentlinkBlurHandler}
-                ></input>
-              </div>
-              {patentlinkInputHasError && (
-                <p className={styles["error-text"]}>link should be valid</p>
-              )}
-              <div>
-                <label>Enter patentApplicationId</label>
-                <input
-                  type="text"
-                  value={patentApplicationId}
-                  onChange={patentApplicationIdChangedHandler}
-                  onBlur={patentApplicationIdBlurHandler}
-                ></input>
-              </div>
-              {patentApplicationIdInputHasError && (
-                <p className={styles["error-text"]}>ID should be valid</p>
-              )}
-              <div>
-                <label>Enter status of Patent </label>
-                <input
-                  type="text"
-                  value={statusOfPatent}
-                  onChange={statusOfPatentChangedHandler}
-                  onBlur={statusOfPatentBlurHandler}
-                ></input>
-              </div>
-              {statusOfPatentInputHasError && (
-                <p className={styles["error-text"]}>
-                  status of Patent Input should be valid
-                </p>
-              )}
-              <div>
-                <label>Enter patent Filled Date </label>
-                <input
-                  type="date"
-                  value={patentFilledDate}
-                  max={new Date().toISOString().split('T')[0]}
-                  onChange={patentFilledDateChangedHandler}
-                  onBlur={patentFilledDateBlurHandler}
-                ></input>
-                {patentFilledDateHasError && (
-                  <p className={styles["error-text"]}>
-                    patent Filled Date cannot be empty
-                  </p>
-                )}
-              </div>
-              <div>
-                <label>Enter patent published date </label>
-                <input
-                  type="date"
-                  max={new Date().toISOString().split('T')[0]}
-                  value={patentPublishedDate}
-                  onChange={patentPublishedDateChangedHandler}
-                  onBlur={patentPublishedDateBlurHandler}
-                ></input>
-                {patentPublishedDateHasError && (
-                  <p className={styles["error-text"]}>
-                    patent published Date cannot be empty
-                  </p>
-                )}
-              </div>
-              <div>
-                <label>Enter patent Granted Date </label>
-                <input
-                  type="date"
-                  max={new Date().toISOString().split('T')[0]}
-                  value={patentGrantedDate}
-                  onChange={patentGrantedDateChangedHandler}
-                  onBlur={patentGrantedDateBlurHandler}
-                ></input>
-                {patentGrantedDateHasError && (
-                  <p className={styles["error-text"]}>
-                    patent granted date cannot be empty
-                  </p>
-                )}
-              </div>
-              <div>
-                <label>Enter patent Published Number </label>
-                <input
-                  type="text"
-                  value={patentPublishedNumber}
-                  onChange={patentPublishedNumberChangedHandler}
-                  onBlur={patentPublishedNumberBlurHandler}
-                ></input>
-                {patentPublishedNumberHasError && (
-                  <p className={styles["error-text"]}>
-                    patent Published Number cannot be empty
-                  </p>
-                )}
-              </div>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <label className={styles["label-txt"]}>Enter Patent Title</label>
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          value={enteredPatent}
+                          onChange={patentChangedHandler}
+                          onBlur={patentBlurHandler}
+                        />
+                        {patentInputHasError && (
+                          <p className={styles["error-text"]}>patent name cannot be empty</p>
+                        )}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label className={styles["label-txt"]}>Enter Patent date</label>
+                      </td>
+                      <td>
+                        <input
+                          type="date"
+                          max={new Date().toISOString().split('T')[0]}
+                          value={enteredPatentdate}
+                          onChange={patentdateChangedHandler}
+                          onBlur={patentdateBlurHandler}
+                        />
+                        {patentdateInputHasError && (
+                          <p className={styles["error-text"]}>patent date cannot be empty</p>
+                        )}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label className={styles["label-txt"]}>Enter Patent Link</label>
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          value={enteredPatentLink}
+                          onChange={patentlinkChangedHandler}
+                          onBlur={patentlinkBlurHandler}
+                        />
+                      </td>
+                    </tr>
+                    {patentlinkInputHasError && (
+                      <tr>
+                        <td></td>
+                        <td>
+                          <p className={styles["error-text"]}>link should be valid</p>
+                        </td>
+                      </tr>
+                    )}
+                    <tr>
+                      <td>
+                        <label className={styles["label-txt"]}>Enter patentApplicationId</label>
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          value={patentApplicationId}
+                          onChange={patentApplicationIdChangedHandler}
+                          onBlur={patentApplicationIdBlurHandler}
+                        />
+                      </td>
+                    </tr>
+                    {patentApplicationIdInputHasError && (
+                      <tr>
+                        <td></td>
+                        <td>
+                          <p className={styles["error-text"]}>ID should be valid</p>
+                        </td>
+                      </tr>
+                    )}
+                    <tr>
+                      <td>
+                        <label className={styles["label-txt"]}>Enter status of Patent </label>
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          value={statusOfPatent}
+                          onChange={statusOfPatentChangedHandler}
+                          onBlur={statusOfPatentBlurHandler}
+                        />
+                      </td>
+                    </tr>
+                    {statusOfPatentInputHasError && (
+                      <tr>
+                        <td></td>
+                        <td>
+                          <p className={styles["error-text"]}>status of Patent Input should be valid</p>
+                        </td>
+                      </tr>
+                    )}
+                    <tr>
+                      <td>
+                        <label className={styles["label-txt"]}>Enter patent Filled Date </label>
+                      </td>
+                      <td>
+                        <input
+                          type="date"
+                          value={patentFilledDate}
+                          max={new Date().toISOString().split('T')[0]}
+                          onChange={patentFilledDateChangedHandler}
+                          onBlur={patentFilledDateBlurHandler}
+                        />
+                        {patentFilledDateHasError && (
+                          <p className={styles["error-text"]}>patent Filled Date cannot be empty</p>
+                        )}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label className={styles["label-txt"]}>Enter patent published date </label>
+                      </td>
+                      <td>
+                        <input
+                          type="date"
+                          max={new Date().toISOString().split('T')[0]}
+                          value={patentPublishedDate}
+                          onChange={patentPublishedDateChangedHandler}
+                          onBlur={patentPublishedDateBlurHandler}
+                        />
+                        {patentPublishedDateHasError && (
+                          <p className={styles["error-text"]}>patent published Date cannot be empty</p>
+                        )}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label className={styles["label-txt"]}>Enter patent Granted Date </label>
+                      </td>
+                      <td>
+                        <input
+                          type="date"
+                          max={new Date().toISOString().split('T')[0]}
+                          value={patentGrantedDate}
+                          onChange={patentGrantedDateChangedHandler}
+                          onBlur={patentGrantedDateBlurHandler}
+                        />
+                        {patentGrantedDateHasError && (
+                          <p className={styles["error-text"]}>patent granted date cannot be empty</p>
+                        )}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label className={styles["label-txt"]}>Enter patent Published Number </label>
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          value={patentPublishedNumber}
+                          onChange={patentPublishedNumberChangedHandler}
+                          onBlur={patentPublishedNumberBlurHandler}
+                        />
+                        {patentPublishedNumberHasError && (
+                          <p className={styles["error-text"]}>patent Published Number cannot be empty</p>
+                        )}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
               {/*footer */}
               <div className={styles["footer"]}>
                 <button

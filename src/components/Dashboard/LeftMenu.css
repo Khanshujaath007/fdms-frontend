@@ -14,7 +14,10 @@
 
 .menu-header h2 {
   font-size: 1.5rem;
-  color: #6a0572; /* Dark lavender text color */
+  color: #6a0572;
+  justify-content: center;
+  align-items: center;
+  display: flex;
   margin: 0;
 }
 

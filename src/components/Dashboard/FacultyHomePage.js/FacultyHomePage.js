@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import LeftMenu from "../LeftMenu";
 import { Link } from "react-router-dom";
-import CopyToClipboard from "react-copy-to-clipboard";
 import "./FacultyHomePage.css";
 import menuItems from "../menuItems";
 import PublicaitonForm from "../../DashboardForms/PublicationForm";
@@ -11,6 +10,7 @@ const FacultyHomePage = () => {
   const { userId } = useParams();
   const [userData, setUserData] = useState({});
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [openModalPatent, setOpenModalPatent] = useState(false);
 
@@ -42,6 +42,7 @@ const FacultyHomePage = () => {
           const data = await response.json();
           console.log(data);
           setFirstName(data.userData.firstName);
+          setLastName(data.userData.lastName);
           setUserData(data.userData);
         } else {
           console.log("Error fetching user profile data");
@@ -66,7 +67,7 @@ const FacultyHomePage = () => {
     <div className="faculty-home-page">
       <LeftMenu
         dashboardTitle="My Dashboard"
-        user={{ name: firstName, email: userData.email }}
+        user={{ name: `${firstName} ${lastName}`, email: userData.email }}
         menuItems={menuItems}
       />
       <div className="home-content">

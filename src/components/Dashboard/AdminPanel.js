@@ -29,11 +29,11 @@ const AdminPanel = () => {
 
   return (
     <>
-      <div className="side-content">
+      <div className="side-content admin-data">
         <LeftMenu
           dashboardTitle="My Dashboard"
           user={user}
-          menuItems={menuItems.map((item) => item.label)}
+          menuItems={menuItems} 
           onItemClick={handleMenuItemClick}
         />
         <div className="main-content">

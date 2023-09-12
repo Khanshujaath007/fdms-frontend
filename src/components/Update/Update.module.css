@@ -1,5 +1,11 @@
 /* FormComponent.module.css */
 
+.heading{
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
 .form {
   width: 600px;
   margin: 2px auto;
@@ -12,7 +18,7 @@
 }
 
 .input {
-  width: 100%;
+  width: 50%;
   padding: 8px;
   margin-bottom: 16px;
   border: 1px solid #ccc;
@@ -20,14 +26,55 @@
 }
 
 .button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  color: white !important;
+  background-color: #8761ac;
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #8150b1;
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.cancelButton {
+  background-color: #ccc;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 30%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancelButton:hover {
+  background-color: #999;
+}
+
+.submitButton {
+  background-color: #8761ac;
+  color: #fff;
+  width: 30%;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #8150b1;
+}
+

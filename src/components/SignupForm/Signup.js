@@ -8,7 +8,6 @@ const Signup = () => {
     email: "",
     password: "",
     contact: "",
-    username: "",
     firstName: "",
     lastName: "",
     age: "",
@@ -22,6 +21,8 @@ const Signup = () => {
     universityId: "",
     department: "",
     code: "",
+    googleScholarIdLink: "",
+    scopusIdLink: "",
   };
 
   const [formValues, setFormValues] = useState(initialValues);
@@ -124,11 +125,6 @@ const Signup = () => {
     const emailregex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
     const nonNumericPattern = /[^\d]/;
 
-    if (!values.username) {
-      errors.username = "Username is required";
-    } else if (values.username.length < 3) {
-      errors.username = "Username too short!";
-    }
     if (!values.email) {
       errors.email = "Email is required";
     } else if (!emailregex.test(values.email)) {
@@ -182,6 +178,7 @@ const Signup = () => {
     if (!values.department) {
       errors.department = "Department is required";
     }
+
     return errors;
   };
   return (
@@ -316,21 +313,6 @@ const Signup = () => {
 
               <div className={styles["field"]}>
                 <label>
-                  Username<span className={styles["star"]}>*</span>
-                </label>
-                <input
-                  type="text"
-                  name="username"
-                  placeholder="Enter your username"
-                  value={formValues.username}
-                  onChange={onChangeHandler}
-                />
-                <span className={styles["error-span"]}>
-                  {formErrors.username}
-                </span>
-              </div>
-              <div className={styles["field"]}>
-                <label>
                   Age<span className={styles["star"]}>*</span>
                 </label>
                 <input
@@ -443,6 +425,30 @@ const Signup = () => {
                 <span className={styles["error-span"]}>
                   {formErrors.department}
                 </span>
+              </div>
+              <div className={styles["field"]}>
+                <label>
+                  Google Scholar ID Link (Optional)
+                </label>
+                <input
+                  type="text"
+                  name="googleScholarIdLink"
+                  placeholder="Enter your Google Scholar ID Link"
+                  value={formValues.googleScholarIdLink}
+                  onChange={onChangeHandler}
+                />
+              </div>
+              <div className={styles["field"]}>
+                <label>
+                  Scopus ID Link (Optional)
+                </label>
+                <input
+                  type="text"
+                  name="scopusIdLink"
+                  placeholder="Enter your Scopus ID Link"
+                  value={formValues.scopusIdLink}
+                  onChange={onChangeHandler}
+                />
               </div>
               <button className={`${styles["button"]}`}>Submit</button>
             </div>

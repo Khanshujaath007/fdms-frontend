@@ -88,7 +88,7 @@ const FacultyHomePage = () => {
         </button>
         {openModalPatent && <PatentForm closeModal={setOpenModalPatent} />}
 
-        <Link className="link" to={`/faculty/edit-profile/${Data[0].id}`}>
+        <Link className="link" to={`/faculty/edit-profile/${userId}`}>
           Edit Profile
         </Link>
         <button className="link" onClick={copyProfileLinkToClipboard}>Copy Profile Link</button>

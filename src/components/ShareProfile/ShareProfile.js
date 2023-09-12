@@ -56,10 +56,10 @@ const ShareProfile = () => {
             </div>
 
             <div className="sadditional-details">
-                <Link to={user.googleScholarId} className="googleScholarlink">
+                <Link to={`https://scholar.google.com/citations?user=${user.googleScholarIdLink}&hl=en`} className="googleScholarlink">
                     Google Scholar ID
                 </Link>
-                <Link to={user.scopusId} className="scopuslink">
+                <Link to={user.scopusIdLink} className="scopuslink">
                     Scopus ID
                 </Link>
             </div>
@@ -85,14 +85,14 @@ const ShareProfile = () => {
                     ? (
                         Array.isArray(publication)
                             ? publication.map((item, index) => (
-                                <Card key={index} title={item.briefExpertise} details={item.googleScholarId} completeDetails={item} />
+                                <Card key={index} title={item.publicationTitle} details={item.publicationDescription} completeDetails={item} />
                             ))
                             : (
                                 Object.keys(publication).length > 0
                                     ? (
                                         <Card
-                                            title={publication.briefExpertise}
-                                            details={publication.googleScholarId}
+                                            title={publication.publicationTitle}
+                                            details={publication.publicationDescription}
                                             completeDetails={publication}
                                         />
                                     )

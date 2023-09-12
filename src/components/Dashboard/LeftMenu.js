@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import maleProfilePhoto from "../../Assets/Image/male_pic.png";
+import femaleProfilePhoto from "../../Assets/Image/female_pic.png";
 import "./LeftMenu.css";
 
 const LeftMenu = ({ dashboardTitle, user, menuItems, onItemClick }) => {
@@ -10,7 +12,7 @@ const LeftMenu = ({ dashboardTitle, user, menuItems, onItemClick }) => {
     onItemClick(item);
     setMenuOpen(false);
   };
-  
+
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
@@ -32,7 +34,11 @@ const LeftMenu = ({ dashboardTitle, user, menuItems, onItemClick }) => {
             {user.profilePicture ? (
               <img src={user.profilePicture} alt="Profile" className="profile-picture" />
             ) : (
-              <div className="default-profile-picture"></div>
+              <img
+                src={user.gender === 'male' || user.gender === 'Male' ? maleProfilePhoto : femaleProfilePhoto}
+                alt="Default Profile"
+                className="default-profile-picture"
+              />
             )}
           </div>
 

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./ProfileDetails.css";
+import ProfileCard from "./ProfileCard";
+import PatentCard from "./PatentCard";
 
-const Profile = ({ userData, publicationData }) => {
+const Profile = ({ userData, publicationData, patentData }) => {
     const [activeTab, setActiveTab] = useState("user-info");
 
 
@@ -54,7 +56,13 @@ const Profile = ({ userData, publicationData }) => {
                         </tr>
                         <tr>
                             <td>Date of Birth:</td>
-                            <td>{userData.dateOfBirth}</td>
+                            <td>
+                                {new Date(userData.dateOfBirth).toLocaleDateString('en-GB', {
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric',
+                                })}
+                            </td>
                         </tr>
                         <tr>
                             <td>Username:</td>
@@ -85,38 +93,77 @@ const Profile = ({ userData, publicationData }) => {
             </div>
 
             <div className={`profile-section ${activeTab !== "publication-info" ? "hidden" : ""}`}>
-
                 <h2>Publication Information</h2>
                 <div className="card">
-                    <p>WOS Subject ID: {publicationData.wosSubjectId}</p>
-                    <p>WOS Subject: {publicationData.wosSubject}</p>
-                    <p>Expertise ID: {publicationData.expertiseId}</p>
-                    <p>Expertise: {publicationData.expertise}</p>
-                    <p>Brief Expertise: {publicationData.briefExpertise}</p>
-                    <p>Qualification: {publicationData.qualification}</p>
-                    <p>Subject: {publicationData.subject}</p>
-                    <p>Working From Month: {publicationData.workingFromMonth}</p>
-                    <p>Working From Year: {publicationData.workingFromYear}</p>
-                    <p>ORCID ID: {publicationData.orcidId}</p>
-                    <p>Researcher ID: {publicationData.researcherId}</p>
-                    <p>Scopus ID: {publicationData.scopusId}</p>
-                    <p>Google Scholar ID: {publicationData.googleScholarId}</p>
+                    {Array.isArray(publicationData) ? (
+                        publicationData.map((item, index) => (
+                            <ProfileCard
+                                key={index}
+                                title={item.publicationTitle}
+                                details={item.publicationDescription}
+                                publicationDate={item.publicationDate}
+                                publicationLink={item.publicationLink}
+                                orcidId={item.orcidId}
+                                researcherId={item.researcherId}
+                                scopusId={item.scopusId}
+                                googleScholarId={item.googleScholarId}
+                            />
+                        ))
+                    ) : Object.keys(publicationData).length > 0 ? (
+                        <ProfileCard
+                            title={publicationData.publicationTitle}
+                            details={publicationData.publicationDescription}
+                            publicationDate={publicationData.publicationDate}
+                            publicationLink={publicationData.publicationLink}
+                            orcidId={publicationData.orcidId}
+                            researcherId={publicationData.researcherId}
+                            scopusId={publicationData.scopusId}
+                            googleScholarId={publicationData.googleScholarId}
+                        />
+                    ) : (
+                        <p>No publication data available.</p>
+                    )}
                 </div>
             </div>
 
             <div className={`profile-section ${activeTab !== "patent-info" ? "hidden" : ""}`}>
                 <h2>Patent Information</h2>
                 <div className="card">
-                    <p>Patent Application ID: {publicationData.patentApplicationId}</p>
-                    <p>Status of Patent: {publicationData.statusOfPatent}</p>
-                    <p>Title of Patent: {publicationData.titleOfPatent}</p>
-                    <p>Applicants Number: {publicationData.applicantsNumber}</p>
-                    <p>Patent Filled Date: {publicationData.patentFilledDate}</p>
-                    <p>Patent Published Date: {publicationData.patentPublishedDate}</p>
-                    <p>Patent Granted Date: {publicationData.patentGrantedDate}</p>
-                    <p>Patent Published Number: {publicationData.patentPublishedNumber}</p>
+                    {Array.isArray(patentData) ? (
+                        patentData.map((item, index) => (
+                            <PatentCard
+                                key={index}
+                                title={item.titleOfPatent}
+                                details={item.statusOfPatent}
+                                patentApplicationId={item.patentApplicationId}
+                                patentLink={item.patentLink}
+                                patentDate={item.patentDate}
+                                statusOfPatent={item.statusOfPatent}
+                                patentFilledDate={item.patentFilledDate}
+                                patentPublishedDate={item.patentPublishedDate}
+                                patentGrantedDate={item.patentGrantedDate}
+                                patentPublishedNumber={item.patentPublishedNumber}
+                            />
+                        ))
+                    ) : Object.keys(patentData).length > 0 ? (
+                        <PatentCard
+                            title={patentData.titleOfPatent}
+                            details={patentData.statusOfPatent}
+                            patentApplicationId={patentData.patentApplicationId}
+                            patentLink={patentData.patentLink}
+                            patentDate={patentData.patentDate}
+                            statusOfPatent={patentData.statusOfPatent}
+                            patentFilledDate={patentData.patentFilledDate}
+                            patentPublishedDate={patentData.patentPublishedDate}
+                            patentGrantedDate={patentData.patentGrantedDate}
+                            patentPublishedNumber={patentData.patentPublishedNumber}
+                        />
+                    ) : (
+                        <p>No patent data available.</p>
+                    )}
                 </div>
             </div>
+
         </div>
     );
 };

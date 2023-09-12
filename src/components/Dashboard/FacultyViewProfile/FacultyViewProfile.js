@@ -8,6 +8,7 @@ import menuItems from "../menuItems";
 const FacultyViewProfile = () => {
   const [userData, setUserData] = useState({});
   const [publicationData, setPublicationData] = useState({});
+  const [patentData, setPatentData] = useState({});
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -29,6 +30,9 @@ const FacultyViewProfile = () => {
           setEmail(data.userData.email);
           setUserData(data.userData);
           setPublicationData(data.publicationInfoData);
+          setPatentData(data.patentInfoData);
+          console.log(data.patentInfoData )
+          console.log(data.publicationInfoData)
         } else {
           console.log("Error fetching user profile data");
         }
@@ -53,7 +57,7 @@ const FacultyViewProfile = () => {
         />
       <div className="profile-main-content main-content">
         {SelectedComponent && <SelectedComponent />}
-        <ProfileDetails userData={userData} publicationData={publicationData} />
+        <ProfileDetails userData={userData} publicationData={publicationData} patentData={patentData} />
       </div>
     </div>
   );

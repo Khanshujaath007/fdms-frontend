@@ -30,7 +30,7 @@ function App() {
             element={<FacultyViewProfile />}
           ></Route>
           <Route
-            path="/admin-dashboard/"
+            path="/admin-dashboard"
             element={<AdminPanel />}
           ></Route>
           <Route

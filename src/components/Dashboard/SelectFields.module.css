@@ -2,13 +2,11 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: rgb(23, 152, 203);
   font-size: medium;
-  display: block;
+  display: flex;
   justify-content: center;
   align-items: center;
+  align-content: center;
   margin: auto;
-  /* position: fixed; */
-  padding: 14px;
-  max-width: 400px;
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  margin-left: auto;
 }

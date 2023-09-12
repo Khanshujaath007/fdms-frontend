@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LeftMenu from "./LeftMenu";
 import SelectFields from "./SelectFields";
-import "./AdminPanel.css";
+import styles from "./AdminPanel.module.css";
 
 const AdminPanel = () => {
   const user = {
@@ -29,14 +29,14 @@ const AdminPanel = () => {
 
   return (
     <>
-      <div className="side-content admin-data">
+      <div className={styles["side-content"]}>
         <LeftMenu
           dashboardTitle="My Dashboard"
           user={user}
-          menuItems={menuItems} 
+          menuItems={menuItems}
           onItemClick={handleMenuItemClick}
         />
-        <div className="main-content">
+        <div className={styles["main-content"]}>
           {SelectedComponent && <SelectedComponent />}
         </div>
       </div>

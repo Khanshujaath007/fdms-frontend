@@ -55,23 +55,23 @@ const FacultyPannel = () => {
           menuItems={menuItems}
           onItemClick={handleMenuItemClick}
         />
-        <div className={styles["main-content"]}>
-          {SelectedComponent && <SelectedComponent />}
-          {showProfileDetails && (
-            <>
-              <LeftMenu
-                dashboardTitle="My Dashboard"
-                user={{ name: `${firstName} ${lastName}`, email }}
-                menuItems={menuItems}
-                onItemClick={handleMenuItemClick}
-              />
-              <ProfileDetails
-                userData={userData}
-                publicationData={publicationData}
-              />
-            </>
-          )}
-        </div>
+      </div>
+      <div className={styles["main-content"]}>
+        {SelectedComponent && <SelectedComponent />}
+        {showProfileDetails && (
+          <>
+            <LeftMenu
+              dashboardTitle="My Dashboard"
+              user={{ name: `${firstName} ${lastName}`, email }}
+              menuItems={menuItems}
+              onItemClick={handleMenuItemClick}
+            />
+            <ProfileDetails
+              userData={userData}
+              publicationData={publicationData}
+            />
+          </>
+        )}
       </div>
     </>
   );

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import "./SelectFields.css";
 import Select from "react-select";
+import axios from "axios";
 import makeAnimated from "react-select/animated";
+import styles from "./SelectFields.module.css";
 const options = [
   { value: "Firstname", label: "First Name" },
   { value: "Lastname", label: "Last Name" },
@@ -27,20 +28,36 @@ export default function SelectFields() {
       selectedFields: selectedValue,
     }));
   };
-  useEffect(() => {
+  const OnSubmitHandler = () => {
     console.log(fields.selectedFields);
+    console.log("sending request to backend");
+    //send request to server to download sheet in selected format
+    axios
+      .post("http://localhost:5500/fetch", fields.selectedFields)
+      .then((response) => {
+        console.log("Response:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+  useEffect(() => {
+    // console.log(fields.selectedFields);
   }, [fields]);
 
   return (
-    <div className="select-field">
-      <Select
-        closeMenuOnSelect={false}
-        onChange={handleChange}
-        components={animatedComponents}
-        // defaultValue={options[0]}
-        isMulti
-        options={options}
-      />
-    </div>
+    <>
+      <div className={styles["select-field"]}>
+        <Select
+          closeMenuOnSelect={false}
+          onChange={handleChange}
+          components={animatedComponents}
+          // defaultValue={options[0]}
+          isMulti
+          options={options}
+        />
+        <button onClick={OnSubmitHandler}>Download</button>
+      </div>
+    </>
   );
 }

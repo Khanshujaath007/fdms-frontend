@@ -1,18 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Logout.module.css";
-export default function Logout() {
+
+const Logout = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    navigate("/login"); 
+  };
+
   return (
-    <>
-      <div>
-        <div className={styles["container"]}>
-          <h2>...</h2>
-          <iframe
-            src="https://giphy.com/embed/LMQo5ad3JdjCAba7Sv"
-            className="giphy-embed"
-            allowFullScreen
-          ></iframe>
-        </div>
-      </div>
-    </>
+    <div>
+      <p style={{ fontSize: "30px" }}>Are you sure you want to logout?</p>
+      <button className={styles["l-button"]} onClick={handleLogout}>Logout</button>
+    </div>
   );
-}
+};
+
+export default Logout;

@@ -1,7 +1,31 @@
 import React from "react";
+import { useParams } from "react-router";
+import { useNavigate } from "react-router";
 
-const ProfileCard = ({ title, details, publicationDate, publicationLink, orcidId, researcherId, scopusId, googleScholarId }) => {
+const ProfileCard = ({ title, details, publicationDate, publicationLink, orcidId, researcherId, scopusId, googleScholarId, publicationId, onDelete }) => {
     console.log(title);
+
+    const { userId } = useParams();
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`http://localhost:5500/delete-publication-info/${userId}/${publicationId}`, {
+                method: "POST",
+
+            });
+            console.log(response);
+            console.log(publicationId);
+            console.log(userId);
+            // onDelete();
+            if (response.ok) {
+                onDelete(publicationId);
+                
+            } else {
+                console.log("Error deleting publication info");
+            }
+        } catch (error) {
+            console.error("Error deleting publication info:", error);
+        }
+    };
     return (
         <div className="card">
             <table className="publication-table">
@@ -45,7 +69,9 @@ const ProfileCard = ({ title, details, publicationDate, publicationLink, orcidId
                     </tr>
                 </tbody>
             </table>
-
+            <button onClick={handleDelete} className="delete-button">
+                Delete
+            </button>
         </div>
     );
 };

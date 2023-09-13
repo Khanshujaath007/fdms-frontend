@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import "./ShareProfile.css";
+import maleProfilePhoto from "../../Assets/Image/male_pic.png";
+import femaleProfilePhoto from "../../Assets/Image/female_pic.png"
 
 const ShareProfile = () => {
     const { userId } = useParams();
@@ -46,7 +48,15 @@ const ShareProfile = () => {
                 <h1 className="stitle">Faculty Information</h1>
             </div>
             <div className="sprofile-picture-container">
-                <img src={user.profilePicture} alt="ProfilePicture" className="sprofile-picture" />
+            {user.profilePicture ? (
+              <img src={user.profilePicture} alt="Profile" className="profile-picture" />
+            ) : (
+              <img
+                src={user.gender === 'male' || user.gender === 'Male' ? maleProfilePhoto : femaleProfilePhoto}
+                alt="Default Profile"
+                className="default-profile-picture"
+              />
+            )}
             </div>
             <div className="sdetails">
                 <h3 className="suser-name">{user.name}</h3>

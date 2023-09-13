@@ -5,6 +5,8 @@ import PatentCard from "./PatentCard";
 
 const Profile = ({ userData, publicationData, patentData }) => {
     const [activeTab, setActiveTab] = useState("user-info");
+    const [publicationInfo, setPublicationData] = useState({});
+    const [patentInfo, setPatentData] = useState({});
 
 
     const handleTabClick = (tabName) => {
@@ -14,6 +16,22 @@ const Profile = ({ userData, publicationData, patentData }) => {
     if (!userData) {
         return <div>Loading...</div>;
     }
+
+    const handlePublicationDelete = (publicationId) => {
+        if (Array.isArray(publicationInfo)) {
+            setPublicationData((prevData) =>
+                prevData.filter((item) => item.publicationId !== publicationId)
+            );
+        }
+    };
+
+    const handlePatentDelete = (patentApplicationId) => {
+        if (Array.isArray(patentInfo)) {
+            setPatentData((prevData) =>
+                prevData.filter((item) => item.patentApplicationId !== patentApplicationId)
+            );
+        }
+    };
 
     return (
         <div className="profile">
@@ -102,6 +120,8 @@ const Profile = ({ userData, publicationData, patentData }) => {
                                 title={item.publicationTitle}
                                 details={item.publicationDescription}
                                 publicationDate={item.publicationDate}
+                                publicationId={item.publicationId}
+                                onDelete={() => handlePublicationDelete(item.publicationId)}
                                 publicationLink={item.publicationLink}
                                 orcidId={item.orcidId}
                                 researcherId={item.researcherId}
@@ -115,6 +135,8 @@ const Profile = ({ userData, publicationData, patentData }) => {
                             details={publicationData.publicationDescription}
                             publicationDate={publicationData.publicationDate}
                             publicationLink={publicationData.publicationLink}
+                            publicationId={publicationData.publicationId}
+                            onDelete={() => handlePublicationDelete(publicationData.publicationId)}
                             orcidId={publicationData.orcidId}
                             researcherId={publicationData.researcherId}
                             scopusId={publicationData.scopusId}
@@ -136,6 +158,7 @@ const Profile = ({ userData, publicationData, patentData }) => {
                                 title={item.titleOfPatent}
                                 details={item.statusOfPatent}
                                 patentApplicationId={item.patentApplicationId}
+                                onDelete={handlePatentDelete}
                                 patentLink={item.patentLink}
                                 patentDate={item.patentDate}
                                 statusOfPatent={item.statusOfPatent}
@@ -151,6 +174,7 @@ const Profile = ({ userData, publicationData, patentData }) => {
                             details={patentData.statusOfPatent}
                             patentApplicationId={patentData.patentApplicationId}
                             patentLink={patentData.patentLink}
+                            onDelete={handlePatentDelete}
                             patentDate={patentData.patentDate}
                             statusOfPatent={patentData.statusOfPatent}
                             patentFilledDate={patentData.patentFilledDate}

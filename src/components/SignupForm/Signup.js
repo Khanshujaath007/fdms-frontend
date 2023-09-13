@@ -11,12 +11,12 @@ const Signup = () => {
     firstName: "",
     lastName: "",
     age: "",
+    gender: "",
     dateOfBirth: "",
     confirmPassword: "",
     fullAddress: "",
     city: "",
     state: "",
-    contact: "",
     university: "",
     universityId: "",
     department: "",
@@ -76,6 +76,7 @@ const Signup = () => {
       setVerificationMessage(message);
       if (response.ok) {
         setIsOtpVerified(true);
+        alert("OTP verified successfully");
       }
     } catch (error) {
       console.log(error);
@@ -149,6 +150,9 @@ const Signup = () => {
     if (!values.age) {
       errors.age = "Age is required";
     }
+    if(!values.gender){
+      errors.gender = "Gender is required"
+    }
     if (!values.dateOfBirth) {
       errors.dateOfBirth = "Date of Birth is required";
     }
@@ -184,7 +188,8 @@ const Signup = () => {
   return (
     <>
       {Object.keys(formErrors).length === 0 && isSubmit === true ? (
-        <div className="ui message success">Signed in Successfully</div>
+        <div className="ui message success">Signed in Successfully
+        {navigate(`/login`)}</div>
       ) : (
         <div className={styles["signup-container"]}>
           <div className={styles["sign-up-header"]}>Welcome! Register here</div>
@@ -310,6 +315,19 @@ const Signup = () => {
                   )}
                 </div>
               )}
+              <div className={styles["field"]}>
+                <label>
+                  Gender<span className={styles["star"]}>*</span>
+                </label>
+                <input 
+                  type="text"
+                  name="gender"
+                  placeholder="Enter your gender"
+                  value={formValues.gender}
+                  onChange={onChangeHandler}
+                />
+
+              </div>
 
               <div className={styles["field"]}>
                 <label>

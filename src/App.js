@@ -46,6 +46,7 @@ function App() {
             element={<SelectFields />}
           ></Route>
           <Route path="/share-profile/:userId" element={<ShareProfile />}></Route>
+          <Route path="/logout" element={<Logout />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
